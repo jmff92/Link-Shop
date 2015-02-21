@@ -22,14 +22,9 @@
 <!-- Drop and re-create the database schema on startup -->
 <property name="hbm2ddl.auto">create</property>
 <!-- Mention here all the model classes along with their package name -->
-
 <!-- Using Annotations -->
-<!-- <mapping class="Class_Name"/> -->
+<mapping class="Class_Name"/>
 <!-- Using hbm.xml files -->
-
-
 <mapping resource="resources/org/hibernate/tutorial/domain/Class_Name.hbm.xml"/>
-
-
 </session-factory>
 </hibernate-configuration>
