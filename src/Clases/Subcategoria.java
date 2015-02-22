@@ -13,6 +13,10 @@ public class Subcategoria {
 		this.nombre = nombre;
 	}
 
+	public Subcategoria() {
+
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

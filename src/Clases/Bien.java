@@ -14,6 +14,10 @@ public class Bien {
 		this.descripcion = descripcion;
 	}
 
+	public Bien() {
+
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

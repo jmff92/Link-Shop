@@ -24,6 +24,7 @@ public class Ciudad implements java.io.Serializable {
 	}
 
 	public Ciudad() {
+		
 	}
 
 	public String getNombre() {

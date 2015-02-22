@@ -8,18 +8,22 @@ import java.sql.Date;
  */
 public class Fecha_Realizacion {
 
-	private Date fecha_realizacion;
+	private Date fecha_r;
 
-	public Fecha_Realizacion(Date fecha_realizacion) {
-		this.fecha_realizacion = fecha_realizacion;
+	public Fecha_Realizacion(Date fecha_r) {
+		this.fecha_r = fecha_r;
 	}
 
-	public Date getFecha_realizacion() {
-		return fecha_realizacion;
+	public Fecha_Realizacion() {
+		
 	}
 
-	public void setFecha_realizacion(Date fecha_realizacion) {
-		this.fecha_realizacion = fecha_realizacion;
+	public Date getFecha_r() {
+		return fecha_r;
+	}
+
+	public void setFecha_r(Date fecha_r) {
+		this.fecha_r = fecha_r;
 	}
 
 }

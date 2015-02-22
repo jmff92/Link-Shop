@@ -13,6 +13,7 @@ public class Enlace {
 	}
 
 	public Enlace() {
+		
 	}
 
 	public String getUrl() {

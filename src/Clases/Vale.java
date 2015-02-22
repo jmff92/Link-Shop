@@ -1,6 +1,5 @@
 package Clases;
 
-import java.math.BigInteger;
 import java.sql.Date;
 import java.util.Set;
 import java.util.HashSet;
@@ -11,7 +10,7 @@ import java.util.HashSet;
  */
 public class Vale {
 
-	private BigInteger identificador;
+	private int identificador;
 	private Date fecha_compra;
 	private String forma_pago;
 	private String descrip_promo;
@@ -19,7 +18,7 @@ public class Vale {
 	private String modo_envio;
 	private Set<Fecha_Uso> fechas_uso = new HashSet<Fecha_Uso>();
 	
-	public Vale(BigInteger identificador, Date fecha_compra, String forma_pago,
+	public Vale(int identificador, Date fecha_compra, String forma_pago,
 			String descrip_promo, String codigo_movil, String modo_envio,
 			Set<Fecha_Uso> fechas_uso) {
 		this.identificador = identificador;
@@ -31,11 +30,15 @@ public class Vale {
 		this.fechas_uso = fechas_uso;
 	}
 
-	public BigInteger getIdentificador() {
+	public Vale() {
+
+	}
+	
+	public int getIdentificador() {
 		return identificador;
 	}
 
-	public void setIdentificador(BigInteger identificador) {
+	public void setIdentificador(int identificador) {
 		this.identificador = identificador;
 	}
 

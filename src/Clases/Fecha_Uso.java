@@ -14,6 +14,10 @@ public class Fecha_Uso {
 		this.fecha_uso = fecha_uso;
 	}
 
+	public Fecha_Uso() {
+
+	}
+
 	public Date getFecha_uso() {
 		return fecha_uso;
 	}

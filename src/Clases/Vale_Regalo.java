@@ -16,6 +16,10 @@ public class Vale_Regalo {
 		this.receptor = receptor;
 		this.fecha_envio = fecha_envio;
 	}
+
+	public Vale_Regalo() {
+		
+	}
 	
 	public String getReceptor() {
 		return receptor;

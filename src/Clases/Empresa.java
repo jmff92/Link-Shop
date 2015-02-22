@@ -20,6 +20,10 @@ public class Empresa {
 		this.num_clientes = num_clientes;
 	}
 
+	public Empresa() {
+
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

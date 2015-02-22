@@ -1,7 +1,5 @@
 package Clases;
 
-import java.math.BigInteger;
-
 /*
  * Clase: Tarjeta_Regalo
  * Descripcion: Equivale a un monto de dinero promoción y que puede ser utilizado 
@@ -9,19 +7,23 @@ import java.math.BigInteger;
  */
 public class Tarjeta_Regalo {
 
-	private BigInteger codigo;
+	private int codigo;
 	private Integer monto;
 	
-	public Tarjeta_Regalo(BigInteger codigo, Integer monto) {
+	public Tarjeta_Regalo(int codigo, Integer monto) {
 		this.codigo = codigo;
 		this.monto = monto;
 	}
 
-	public BigInteger getCodigo() {
+	public Tarjeta_Regalo() {
+
+	}
+
+	public int getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(BigInteger codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 

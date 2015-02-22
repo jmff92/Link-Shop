@@ -12,6 +12,10 @@ public class Categoria {
 		this.nombre = nombre;
 	}
 
+	public Categoria() {
+
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

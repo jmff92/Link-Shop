@@ -15,6 +15,10 @@ public class Evento {
 		this.fechas = fechas;
 	}
 
+	public Evento() {
+
+	}
+
 	public Set<Fecha_Realizacion> getFechas() {
 		return fechas;
 	}

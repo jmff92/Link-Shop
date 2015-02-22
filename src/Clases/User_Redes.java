@@ -13,6 +13,10 @@ public class User_Redes {
 		this.user_redes = user_redes;
 	}
 
+	public User_Redes() {
+
+	}
+	
 	public String getUser_redes() {
 		return user_redes;
 	}

@@ -12,6 +12,10 @@ public class TDC {
 		this.tdc = tdc;
 	}
 
+	public TDC() {
+		
+	}
+
 	public String getTdc() {
 		return tdc;
 	}
