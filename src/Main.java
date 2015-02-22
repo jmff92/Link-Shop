@@ -12,10 +12,10 @@ public class Main {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 			
-		Ciudad c1 = new Ciudad();
+/*		Ciudad c1 = new Ciudad();
 		c1.setNombre("Toledo");
 		c1.setPais("España");
-				
+
 		Promocion p1 = new Promocion();
 		p1.setIdentificador(245638);
 		p1.setDescripcion("Excursion en Merida");
@@ -23,38 +23,42 @@ public class Main {
 		p1.setPrecio_ofertado(7600);
 		p1.setFecha_ini_vig(new Date(115,2,3));
 		p1.setFecha_fin_vig(new Date(115,5,3));
-		p1.setCoordenadas(1234567890);
-		
-		Enlace e1 = new Enlace();
-		e1.setUrl("www.venezuelatuya.com");
-		
-		p1.getEnlaces().add(e1);
+		p1.setCoordenadas(1234567890);		
 
-		// Se agrega sobre la clase propietaria, check inverse en set de su xml
 		c1.getPromociones().add(p1);
-		p1.getCiudades().add(c1);
+		p1.getCiudades().add(c1);*/
 		
-//Vale_Regalo vr1 = new Vale_Regalo();
+		//Vale_Regalo vr1 = new Vale_Regalo();
 
-//vr1.setIdentificador(123456);
-//vr1.setFecha_compra(new Date(3,5,2015));
-//vr1.setForma_pago("TDC");
-//vr1.setDescrip_promo("Ful day en los Roques");
-//vr1.setCodigo_movil("QR123456");
-//vr1.setModo_envio("Correo Electronico");
-//vr1.setReceptor("Rosangelis");
-//vr1.setFecha_envio(new Date(5,5,2015));
+		//vr1.setIdentificador(123456);
+		//vr1.setFecha_compra(new Date(3,5,2015));
+		//vr1.setForma_pago("TDC");
+		//vr1.setDescrip_promo("Ful day en los Roques");
+		//vr1.setCodigo_movil("QR123456");
+		//vr1.setModo_envio("Correo Electronico");
+		//vr1.setReceptor("Rosangelis");
+		//vr1.setFecha_envio(new Date(5,5,2015));
 
-//Fecha_Realizacion fecha1 = new Fecha_Realizacion(new Date(115,5,2));
-//Fecha_Realizacion fecha2 = new Fecha_Realizacion(new Date(115,5,3));
-//Set<Fecha_Realizacion> fechas = new HashSet<Fecha_Realizacion>();
-//fechas.add(fecha1);
-//fechas.add(fecha2);
+		//Fecha_Realizacion fecha1 = new Fecha_Realizacion(new Date(115,5,2));
+		//Fecha_Realizacion fecha2 = new Fecha_Realizacion(new Date(115,5,3));
+		//Set<Fecha_Realizacion> fechas = new HashSet<Fecha_Realizacion>();
+		//fechas.add(fecha1);
+		//fechas.add(fecha2);
 
-//Evento evento = new Evento();
-//evento.setNombre("TOUR");
-//evento.setDescripcion("Rihanna concierto");
-//evento.setFechas(fechas);
+		//Evento evento = new Evento();
+		//evento.setNombre("TOUR");
+		//evento.setDescripcion("Rihanna concierto");
+		//evento.setFechas(fechas);
+
+/*		Enlace e1 = new Enlace();
+		e1.setUrl("www.venezuelatuya.com");
+		Enlace e2 = new Enlace();
+		e2.setUrl("www.google.com");
+		Set<Enlace> enlaces = new HashSet<Enlace>();
+		enlaces.add(e1);
+		enlaces.add(e2);
+
+		p1.setEnlaces(enlaces);*/
 
 
 //        @SuppressWarnings("deprecation")
@@ -67,11 +71,11 @@ public class Main {
 	    //session.save(fecha2);
 		//session.save(evento);
 		//session.save(vr1); 
+//	    session.save(e1);
+//	    session.save(e2);
+//	    session.save(p1);    
+//	   	session.save(c1);
 
-//	    // Primero se guarda la clase no propietaria, check inverse en set de su xml
-	    session.save(e1);
-	    session.save(p1);    
-	    session.save(c1);	
 	    	    
         session.getTransaction().commit();
 	         

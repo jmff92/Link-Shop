@@ -7,7 +7,7 @@ import java.util.Date;
  * Descripcion: Son aquellos que se dan como obsequio de un usuario a otra 
  * persona sobre una promoción de Link-Shop.
  */
-public class Vale_Regalo {
+public class Vale_Regalo extends Vale {
 	
 	private String receptor;
 	private Date fecha_envio;

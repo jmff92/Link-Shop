@@ -7,7 +7,7 @@ import java.util.HashSet;
  * Clase: Evento
  * Descripcion: Suceso de importancia que se encuentra programado
  */
-public class Evento {
+public class Evento extends Bien {
 
 	private Set<Fecha_Realizacion> fechas = new HashSet<Fecha_Realizacion>();
 
