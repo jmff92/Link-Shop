@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Clases">
+
+    <class name="Fecha_Realizacion" table="FECHA_REALIZACION">
+        <id name="fecha_r" column="FECHA_R"></id>
+    </class>
+ 
+    <class name="Bien" table="BIEN" discriminator-value="B">
+
+        <id name="nombre" column="NOMBRE"></id>
+ 
+        <discriminator column="DISCRIMINATOR" type="string"/>
+
+        <property name="descripcion" column="DESCRIPCION"/>
+ 
+        <subclass name="Evento" extends="Bien" discriminator-value="E">
+      
+            <set name="fechas" inverse="false" lazy="true" fetch="select" cascade="all"> 
+            	 <key column="NOMBRE"/>
+                <one-to-many class="Clases.Fecha_Realizacion"/>
+            </set>        
+            
+        </subclass>
+
+    </class>
+
+
+    
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Clases">
+ 
+    <class name="Empresa" table="EMPRESA">
+ 
+        <id name="Nombre" column="NOMBRE">
+        </id>
+        
+        <property name="telefono" column="TELEFONO"/>
+        <property name="direccion" column="DIRECCION"/>
+        <property name="num_clientes" column="NUM_CLIENTES"/>
+ 
+        <set name="Categorias" table="SE_ALMACENA" inverse="true" lazy="true" fetch="select"> 
+         <key>
+            <column name="NOMBRE_CAT" not-null="true"/>         
+         </key>
+            <many-to-many class="Clases.Empresa">
+                <column name="NOMBRE_EMP"/>
+            </many-to-many>
+        </set>
+        
+        
+    </class>
+  
+</hibernate-mapping>

@@ -28,7 +28,7 @@ public class Main {
 		Enlace e1 = new Enlace();
 		e1.setUrl("www.venezuelatuya.com");
 		
-		p1.getEnlaces().add(e1);
+//		p1.getEnlaces().add(e1);
 
 		// Se agrega sobre la clase propietaria, check inverse en set de su xml
 		c1.getPromociones().add(p1);
@@ -69,7 +69,7 @@ public class Main {
 		//session.save(vr1); 
 
 //	    // Primero se guarda la clase no propietaria, check inverse en set de su xml
-	    session.save(e1);
+//	    session.save(e1);
 	    session.save(p1);    
 	    session.save(c1);	
 	    	    

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Clases">
+ 
+    <class name="Vale" table="VALE" discriminator-value="V">
+
+        <id name="identificador" column="IDENTIFICADOR"></id>
+ 
+        <discriminator column="DISCRIMINATOR" type="string"/>
+ 
+        <property name="fecha_compra" type="date" column="FECHA_COMPRA"/>
+        <property name="forma_pago" column="FORMA_PAGO"/>
+        <property name="descrip_promo" column="DESCRIP_PROMO"/>
+        <property name="codigo_movil" column="CODIGO_MOVIL"/>
+        <property name="modo_envio" column="MODO_ENVIO"/>
+        <!-- FALTA Set<Fecha_Uso> fechas_uso -->
+ 
+        <subclass name="Vale_Regalo" extends="Vale" discriminator-value="VR">
+            <property name="receptor" column="RECEPTOR"/>
+            <property name="fecha_envio" type="date" column="FECHA_ENVIO"/>
+        </subclass>
+ 
+    </class>
+    
+</hibernate-mapping>

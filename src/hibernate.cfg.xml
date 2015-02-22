@@ -36,10 +36,11 @@
 <!-- Using hbm.xml files -->
 <mapping resource="Mappings/Ciudad.hbm.xml"/>
 <mapping resource="Mappings/Promocion.hbm.xml"/>
-<mapping resource="Mappings/Enlace.hbm.xml"/>
+<!-- <mapping resource="Mappings/Enlace.hbm.xml"/> -->
 <mapping resource="Mappings/Vale.hbm.xml"/>
 <mapping resource="Mappings/Bien.hbm.xml"/>
-
+<mapping resource="Mappings/Empresa.hbm.xml"/>
+<mapping resource="Mappings/Categoria.hbm.xml"/>
 </session-factory>
 
 </hibernate-configuration>

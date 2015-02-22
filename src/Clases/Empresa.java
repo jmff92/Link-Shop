@@ -1,5 +1,8 @@
 package Clases;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /*
  * Clase: Empresa
  * Descripcion: Organización dedicada a actividades comerciales para satisfacer 
@@ -11,13 +14,16 @@ public class Empresa {
 	private String telefono;
 	private String direccion;
 	private int num_clientes;
+	
+	private Set<Categoria> categorias = new HashSet<Categoria>();	
 		
 	public Empresa(String nombre, String telefono, String direccion,
-			int num_clientes) {
+			int num_clientes, Set<Categoria> categorias) {
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.num_clientes = num_clientes;
+		this.categorias = categorias;
 	}
 
 	public Empresa() {
@@ -54,6 +60,14 @@ public class Empresa {
 
 	public void setNum_clientes(int num_clientes) {
 		this.num_clientes = num_clientes;
+	}
+
+	public Set<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(Set<Categoria> categorias) {
+		this.categorias = categorias;
 	}	
 	
 }

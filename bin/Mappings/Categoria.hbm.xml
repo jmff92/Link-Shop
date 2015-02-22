@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Clases">
+ 
+    <class name="Categoria" table="CATEGORIA">
+ 
+        <id name="Nombre" column="NOMBRE">
+        </id>
+  
+        <set name="Empresas" table="SE_ALMACENA" inverse="false" lazy="true" fetch="select" cascade="all"> 
+         <key>
+            <column name="NOMBRE_EMP" not-null="true"/>          
+         </key>
+            <many-to-many class="Clases.Categoria">
+                <column name="NOMBRE_CAT" not-null="true"/>
+            </many-to-many>
+        </set>        
+        
+    </class>
+  
+</hibernate-mapping>
