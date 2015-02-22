@@ -15,15 +15,16 @@ public class Usuario {
 	private String nombre;
 	private String apellido;
 	private String correo_elec;
-	private Boolean suscrip_correos;
+	private String suscrip_correos;
+	private String frec_correos;
 	private int dinero_promo;
 	private int puntos;
-	private Set<TDC> tdcs = new HashSet<TDC>();
+	private Set<Tarjeta_Credito> tdcs = new HashSet<Tarjeta_Credito>();
 	private Set<User_Redes> users_redes = new HashSet<User_Redes>();
 	
 	public Usuario(String username, String contrasena, String nombre,
-			String apellido, String correo_elec, Boolean suscrip_correos,
-			int dinero_promo, int puntos, Set<TDC> tdcs,
+			String apellido, String correo_elec, String suscrip_correos,
+			String frec_correos, int dinero_promo, int puntos, Set<Tarjeta_Credito> tdcs,
 			Set<User_Redes> users_redes) {
 		this.username = username;
 		this.contrasena = contrasena;
@@ -31,6 +32,7 @@ public class Usuario {
 		this.apellido = apellido;
 		this.correo_elec = correo_elec;
 		this.suscrip_correos = suscrip_correos;
+		this.frec_correos = frec_correos;
 		this.dinero_promo = dinero_promo;
 		this.puntos = puntos;
 		this.tdcs = tdcs;
@@ -81,12 +83,20 @@ public class Usuario {
 		this.correo_elec = correo_elec;
 	}
 
-	public Boolean getSuscrip_correos() {
+	public String getSuscrip_correos() {
 		return suscrip_correos;
 	}
 
-	public void setSuscrip_correos(Boolean suscrip_correos) {
+	public void setSuscrip_correos(String suscrip_correos) {
 		this.suscrip_correos = suscrip_correos;
+	}
+
+	public String getFrec_correos() {
+		return frec_correos;
+	}
+
+	public void setFrec_correos(String frec_correos) {
+		this.frec_correos = frec_correos;
 	}
 
 	public int getDinero_promo() {
@@ -105,11 +115,11 @@ public class Usuario {
 		this.puntos = puntos;
 	}
 
-	public Set<TDC> getTdcs() {
+	public Set<Tarjeta_Credito> getTdcs() {
 		return tdcs;
 	}
 
-	public void setTdcs(Set<TDC> tdcs) {
+	public void setTdcs(Set<Tarjeta_Credito> tdcs) {
 		this.tdcs = tdcs;
 	}
 

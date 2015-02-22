@@ -8,22 +8,22 @@ import java.sql.Date;
  */
 public class Fecha_Uso {
 
-	private Date fecha_uso;
+	private Date fecha_u;
 
-	public Fecha_Uso(Date fecha_uso) {
-		this.fecha_uso = fecha_uso;
+	public Fecha_Uso(Date fecha_u) {
+		this.fecha_u = fecha_u;
 	}
 
 	public Fecha_Uso() {
 
 	}
 
-	public Date getFecha_uso() {
-		return fecha_uso;
+	public Date getFecha_u() {
+		return fecha_u;
 	}
 
-	public void setFecha_uso(Date fecha_uso) {
-		this.fecha_uso = fecha_uso;
+	public void setFecha_u(Date fecha_u) {
+		this.fecha_u = fecha_u;
 	}	
 	
 }
