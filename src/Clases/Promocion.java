@@ -5,6 +5,11 @@ import java.sql.Date;
 import java.util.Set;
 import java.util.HashSet;
 
+/*
+ * Clase: Promocion
+ * Descripcion: Modalidad de venta donde los productos, servicios o eventos son 
+ * ofertados a un precio menor al real en sus principales puntos de comercializacion
+ */
 public class Promocion {
 
 	private int identificador;
@@ -109,3 +114,5 @@ public class Promocion {
 	}
 
 }
+
+// END Promocion.java

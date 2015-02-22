@@ -3,6 +3,11 @@ package Clases;
 import java.util.HashSet;
 import java.util.Set;
 
+/*
+ * Clase: Ciudad
+ * Descripcion: La ciudad en donde se tienen promociones de productos, servicios 
+ * o eventos
+ */
 public class Ciudad implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -45,3 +50,5 @@ public class Ciudad implements java.io.Serializable {
 		this.promociones = promociones;
 	}
 }
+
+// END Ciudad.java

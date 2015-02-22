@@ -1,5 +1,9 @@
 package Clases;
 
+/*
+ * Clase: Enlace
+ * Descripcion: Enlaces para obtener mayor informacion de la promocion
+ */
 public class Enlace {
 
 	private String url;
@@ -17,3 +21,5 @@ public class Enlace {
 	}
 
 }
+
+// END Enlace.java
