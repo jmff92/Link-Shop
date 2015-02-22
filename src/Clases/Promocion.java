@@ -1,6 +1,5 @@
 package Clases;
 
-import java.math.BigInteger;
 import java.sql.Date;
 import java.util.Set;
 import java.util.HashSet;
@@ -18,14 +17,14 @@ public class Promocion {
 	private int precio_ofertado;
 	private Date fecha_ini_vig;
 	private Date fecha_fin_vig;
-	private BigInteger coordenadas;
+	private int coordenadas;
 	private Set<Enlace> enlaces = new HashSet<Enlace>();
 	
 	private Set<Ciudad> ciudades = new HashSet<Ciudad>();
 	
 	public Promocion(int identificador, String descripcion, int precio_real,
 			int precio_ofertado, Date fecha_ini_vig, Date fecha_fin_vig,
-			BigInteger coordenadas, Set<Enlace> enlaces, Set<Ciudad> ciudades) {
+			int coordenadas, Set<Enlace> enlaces, Set<Ciudad> ciudades) {
 		super();
 		this.identificador = identificador;
 		this.descripcion = descripcion;
@@ -89,11 +88,11 @@ public class Promocion {
 		this.fecha_fin_vig = fecha_fin_vig;
 	}
 
-	public BigInteger getCoordenadas() {
+	public int getCoordenadas() {
 		return coordenadas;
 	}
 
-	public void setCoordenadas(BigInteger coordenadas) {
+	public void setCoordenadas(int coordenadas) {
 		this.coordenadas = coordenadas;
 	}
 
