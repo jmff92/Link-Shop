@@ -34,6 +34,10 @@
             <key column="IDENTIFICADOR"/>
             <one-to-many class="Clases.Enlace"/>
         </set>   
+               
+        <many-to-one name="empresa" class="Clases.Empresa" fetch="select">
+            <column name="NOMBRE" not-null="true"> </column>
+        </many-to-one>         
         
     </class>
   

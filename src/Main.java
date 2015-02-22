@@ -12,7 +12,7 @@ public class Main {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 			
-/*		Ciudad c1 = new Ciudad();
+		Ciudad c1 = new Ciudad();
 		c1.setNombre("Toledo");
 		c1.setPais("España");
 
@@ -25,14 +25,14 @@ public class Main {
 		p1.setFecha_fin_vig(new Date(115,5,3));
 		p1.setCoordenadas(1234567890);
 		
-		Enlace e1 = new Enlace();
+/*		Enlace e1 = new Enlace();
 		e1.setUrl("www.venezuelatuya.com");
 		
-//		p1.getEnlaces().add(e1);
+		p1.getEnlaces().add(e1); */
 		p1.setCoordenadas(1234567890);		
 
 		c1.getPromociones().add(p1);
-		p1.getCiudades().add(c1);*/
+		p1.getCiudades().add(c1);
 		
 		//Vale_Regalo vr1 = new Vale_Regalo();
 
@@ -66,28 +66,39 @@ public class Main {
 
 		p1.setEnlaces(enlaces);*/
 
+		Empresa m1 = new Empresa();
+		m1.setNombre("McDonalds");
+		m1.setTelefono("02129454422");
+		m1.setDireccion("Avenida principal de la Trinidad, Baruta - Edo.Miranda");
+		m1.setNum_clientes(2500);
+		
+		Categoria t1 = new Categoria();
+		t1.setNombre("Alimentos");
+		
+		m1.getCategorias().add(t1);
+		t1.getEmpresas().add(m1);
 
-
+		p1.setEmpresa(m1);
+		m1.getPromociones().add(p1);
+		
         @SuppressWarnings("deprecation")
 
 	    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	    Session session = sessionFactory.openSession();
 	    session.beginTransaction();
 
-	   	//session.save(fecha1);
-	    //session.save(fecha2);
-		//session.save(evento);
-		//session.save(vr1); 
-//	    session.save(e1);
-//	    session.save(e2);
-//	    session.save(p1);    
+	    session.save(m1);	    
+	    session.save(p1);    
 //	   	session.save(c1);
 
 
 //	    // Primero se guarda la clase no propietaria, check inverse en set de su xml
-//	    session.save(e1);
 //	    session.save(p1);    
-//	    session.save(c1);		    	    
+//	    session.save(c1);
+	    	    
+//	    session.save(m1);
+//	    session.save(t1);
+
         session.getTransaction().commit();
 	         
         session.close();

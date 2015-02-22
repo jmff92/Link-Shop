@@ -16,13 +16,20 @@
  
         <set name="Categorias" table="SE_ALMACENA" inverse="true" lazy="true" fetch="select"> 
          <key>
-            <column name="NOMBRE_CAT" not-null="true"/>         
+            <column name="NOMBRE_EMP" not-null="true"/>         
          </key>
-            <many-to-many class="Clases.Empresa">
-                <column name="NOMBRE_EMP"/>
+            <many-to-many class="Clases.Categoria">
+                <column name="NOMBRE_CAT"/>
             </many-to-many>
         </set>
         
+         <set name="Promociones" table="PUBLICA" inverse="true" lazy="true" fetch="select">  
+            <key>
+                <column name="IDENTIFICADOR" not-null="true"/>
+            </key> 
+            <one-to-many class="Clases.Promocion"/>
+         </set>
+       
         
     </class>
   

@@ -12,10 +12,10 @@
   
         <set name="Empresas" table="SE_ALMACENA" inverse="false" lazy="true" fetch="select" cascade="all"> 
          <key>
-            <column name="NOMBRE_EMP" not-null="true"/>          
+            <column name="NOMBRE_CAT" not-null="true"/>          
          </key>
-            <many-to-many class="Clases.Categoria">
-                <column name="NOMBRE_CAT" not-null="true"/>
+            <many-to-many class="Clases.Empresa">
+                <column name="NOMBRE_EMP" not-null="true"/>
             </many-to-many>
         </set>        
         

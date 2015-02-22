@@ -21,10 +21,12 @@ public class Promocion {
 	private Set<Enlace> enlaces = new HashSet<Enlace>();
 	
 	private Set<Ciudad> ciudades = new HashSet<Ciudad>();
+	private Empresa empresa;	
 	
 	public Promocion(int identificador, String descripcion, int precio_real,
 			int precio_ofertado, Date fecha_ini_vig, Date fecha_fin_vig,
-			int coordenadas, Set<Enlace> enlaces, Set<Ciudad> ciudades) {
+			int coordenadas, Set<Enlace> enlaces, Set<Ciudad> ciudades,
+			Empresa empresa) {
 		super();
 		this.identificador = identificador;
 		this.descripcion = descripcion;
@@ -35,6 +37,7 @@ public class Promocion {
 		this.coordenadas = coordenadas;
 		this.enlaces = enlaces;
 		this.ciudades = ciudades;
+		this.empresa = empresa;
 	}
 
 	public Promocion() {
@@ -110,6 +113,14 @@ public class Promocion {
 
 	public void setCiudades(Set<Ciudad> ciudades) {
 		this.ciudades = ciudades;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }

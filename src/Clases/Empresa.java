@@ -16,14 +16,16 @@ public class Empresa {
 	private int num_clientes;
 	
 	private Set<Categoria> categorias = new HashSet<Categoria>();	
+	private Set<Promocion> promociones = new HashSet<Promocion>();	
 		
 	public Empresa(String nombre, String telefono, String direccion,
-			int num_clientes, Set<Categoria> categorias) {
+			int num_clientes, Set<Categoria> categorias, Set<Promocion> promociones) {
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.num_clientes = num_clientes;
 		this.categorias = categorias;
+		this.promociones = promociones;
 	}
 
 	public Empresa() {
@@ -68,6 +70,14 @@ public class Empresa {
 
 	public void setCategorias(Set<Categoria> categorias) {
 		this.categorias = categorias;
+	}
+
+	public Set<Promocion> getPromociones() {
+		return promociones;
+	}
+
+	public void setPromociones(Set<Promocion> promociones) {
+		this.promociones = promociones;
 	}	
 	
 }
