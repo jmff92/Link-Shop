@@ -3,22 +3,21 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.hibernate.tutorial.domain">
+<hibernate-mapping package="Clases">
  
     <class name="Ciudad" table="CIUDAD">
  
-        <id name="meetingId" type="java.lang.Long" column="MEETING_ID">
-            <generator class="native"></generator>
-        </id>
- 
-        <property name="subject" column="SUBJECT"/>
-        <property name="meetingDate" type="date" column="MEETING_DATE"/>
- 
-        <set name="employees" table="EMPLOYEE_MEETING" inverse="true" lazy="true" fetch="select"> 
+        <composite-id>
+            <key-property name="nombre" column="NOMBRE"  />
+            <key-property name="pais" column="PAIS" />
+        </composite-id>
+  
+        <set name="Promociones" table="PROMOCION_CIUDAD" inverse="true" lazy="true" fetch="select" cascade="all"> 
          <key>
-            <column name="MEETING_ID" not-null="true"/>
+            <column name="NOMBRE" not-null="true"/>
+            <column name="PAIS" not-null="true"/>            
          </key>
-            <many-to-many column="EMPLOYEE_ID" class="org.hibernate.tutorial.domain.Employee"></many-to-many>
+            <many-to-many column="IDENTIFICADOR" class="Clases.Promocion"></many-to-many>
         </set>
         
         

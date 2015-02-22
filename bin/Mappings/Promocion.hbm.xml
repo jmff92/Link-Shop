@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Clases">
+ 
+    <class name="Promocion" table="PROMOCION">
+ 
+        <id name="Identificador" column="IDENTIFICADOR">
+            <generator class="native"/>
+        </id>
+        
+        <property name="descripcion" column="DESCRIPCION"/>
+        <property name="precio_real" column="PRECIO_REAL"/>
+        <property name="precio_ofertado" column="PRECIO_OFERTADO"/>
+        <property name="fecha_ini_vig" column="FECHA_INI_VIG"/>
+         <!-- FALTAN ENLACES -->
+        <property name="coordenadas" column="COORDENADAS"/>
+  
+        <set name="Ciudades" table="PROMOCION_CIUDAD" inverse="false" lazy="true" fetch="select" cascade="all"> 
+         <key>
+            <column name="IDENTIFICADOR" not-null="true"/>         
+         </key>
+            <many-to-many class="Clases.Ciudad">
+                <column name="CIUDAD"/>
+                <column name="PAIS"/>
+            </many-to-many>
+        </set>
+        
+        
+    </class>
+  
+</hibernate-mapping>

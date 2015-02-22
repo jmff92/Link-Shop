@@ -33,6 +33,9 @@ public class Promocion {
 		this.ciudades = ciudades;
 	}
 
+	public Promocion() {
+	}
+
 	public int getIdentificador() {
 		return identificador;
 	}
