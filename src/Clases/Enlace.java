@@ -12,6 +12,9 @@ public class Enlace {
 		this.url = url;
 	}
 
+	public Enlace() {
+	}
+
 	public String getUrl() {
 		return url;
 	}
