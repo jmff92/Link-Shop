@@ -2,6 +2,7 @@ package Clases;
 
 import java.util.Set;
 import java.util.HashSet;
+import Bien;
 
 /*
  * Clase: Evento

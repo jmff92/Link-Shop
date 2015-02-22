@@ -1,6 +1,7 @@
 package Clases;
 
 import java.util.Date;
+import Vale;
 
 /*
  * Clase: Vale_Regalo
