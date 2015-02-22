@@ -36,6 +36,7 @@
 <!-- Using hbm.xml files -->
 <mapping resource="Mappings/Ciudad.hbm.xml"/>
 <mapping resource="Mappings/Promocion.hbm.xml"/>
+<mapping resource="Mappings/Enlace.hbm.xml"/>
 
 </session-factory>
 

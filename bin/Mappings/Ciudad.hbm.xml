@@ -12,7 +12,7 @@
             <key-property name="pais" column="PAIS" />
         </composite-id>
   
-        <set name="Promociones" table="PROMOCION_CIUDAD" inverse="false" lazy="true" fetch="select" cascade="all"> 
+        <set name="Promociones" table="OFERTADA_EN" inverse="false" lazy="true" fetch="select" cascade="all"> 
          <key>
             <column name="NOMBRE" not-null="true"/>
             <column name="PAIS" not-null="true"/>            
