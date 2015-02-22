@@ -4,12 +4,14 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="Clases">
+
+    <class name="Enlace" table="ENLACE">
+        <id name="url" column="URL"></id>
+    </class>
  
     <class name="Promocion" table="PROMOCION">
  
-        <id name="Identificador" column="IDENTIFICADOR">
-            <generator class="native"/>
-        </id>
+        <id name="Identificador" column="IDENTIFICADOR"></id>
         
         <property name="descripcion" column="DESCRIPCION"/>
         <property name="precio_real" column="PRECIO_REAL"/>
@@ -17,13 +19,6 @@
         <property name="fecha_ini_vig" column="FECHA_INI_VIG"/>
         <property name="fecha_fin_vig" column="FECHA_FIN_VIG"/>        
         <property name="coordenadas" column="COORDENADAS"/>
-
-<!--         <set name="Enlaces" table="PROMOCION_ENLACE" inverse="false" lazy="true" fetch="select">  -->
-<!--          <key> -->
-<!--             <column name="IDENTIFICADOR" not-null="true"/>          -->
-<!--          </key> -->
-<!--             <one-to-many class="Clases.Enlace" /> -->
-<!--         </set> -->
   
         <set name="Ciudades" table="OFERTADA_EN" inverse="true" lazy="true" fetch="select"> 
          <key>
@@ -35,6 +30,10 @@
             </many-to-many>
         </set>
         
+        <set name="enlaces" inverse="false" lazy="true" fetch="select" cascade="all"> 
+            <key column="IDENTIFICADOR"/>
+            <one-to-many class="Clases.Enlace"/>
+        </set>   
         
     </class>
   
