@@ -15,15 +15,16 @@
         <property name="precio_real" column="PRECIO_REAL"/>
         <property name="precio_ofertado" column="PRECIO_OFERTADO"/>
         <property name="fecha_ini_vig" column="FECHA_INI_VIG"/>
+        <property name="fecha_fin_vig" column="FECHA_FIN_VIG"/>        
          <!-- FALTAN ENLACES -->
         <property name="coordenadas" column="COORDENADAS"/>
   
-        <set name="Ciudades" table="PROMOCION_CIUDAD" inverse="false" lazy="true" fetch="select" cascade="all"> 
+        <set name="Ciudades" table="PROMOCION_CIUDAD" inverse="true" lazy="true" fetch="select"> 
          <key>
             <column name="IDENTIFICADOR" not-null="true"/>         
          </key>
             <many-to-many class="Clases.Ciudad">
-                <column name="CIUDAD"/>
+                <column name="NOMBRE"/>
                 <column name="PAIS"/>
             </many-to-many>
         </set>

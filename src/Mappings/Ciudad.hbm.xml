@@ -12,14 +12,15 @@
             <key-property name="pais" column="PAIS" />
         </composite-id>
   
-        <set name="Promociones" table="PROMOCION_CIUDAD" inverse="true" lazy="true" fetch="select" cascade="all"> 
+        <set name="Promociones" table="PROMOCION_CIUDAD" inverse="false" lazy="true" fetch="select" cascade="all"> 
          <key>
             <column name="NOMBRE" not-null="true"/>
             <column name="PAIS" not-null="true"/>            
          </key>
-            <many-to-many column="IDENTIFICADOR" class="Clases.Promocion"></many-to-many>
-        </set>
-        
+            <many-to-many class="Clases.Promocion">
+                <column name="IDENTIFICADOR" not-null="true"/>
+            </many-to-many>
+        </set>        
         
     </class>
   
