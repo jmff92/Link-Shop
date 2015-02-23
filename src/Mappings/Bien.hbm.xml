@@ -16,7 +16,16 @@
         <discriminator column="DISCRIMINATOR" type="string"/>
 
         <property name="descripcion" column="DESCRIPCION"/>
- 
+
+		<set name="promociones" table="BIEN_PROMOCION" inverse="true" lazy="true" fetch="select"> 
+	         <key>
+	            <column name="NOMBRE" not-null="true"/>
+	         </key>
+            <many-to-many class="Clases.Promocion">
+                <column name="IDENTIFICADOR" not-null="true"/>
+            </many-to-many>
+        </set> 
+
         <subclass name="Evento" extends="Bien" discriminator-value="E">
       
             <set name="fechas" inverse="false" lazy="true" fetch="select" cascade="all"> 
@@ -27,7 +36,5 @@
         </subclass>
 
     </class>
-
-
     
 </hibernate-mapping>
