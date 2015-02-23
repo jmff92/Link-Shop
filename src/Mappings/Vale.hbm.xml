@@ -34,6 +34,7 @@
         <subclass name="Vale_Regalo" extends="Vale" discriminator-value="VR">
             <property name="receptor" column="RECEPTOR"/>
             <property name="fecha_envio" type="date" column="FECHA_ENVIO"/>
+        </subclass>
  
     </class>
     
