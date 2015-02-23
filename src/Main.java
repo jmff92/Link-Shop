@@ -137,14 +137,12 @@ public class Main {
 		u1.setPuntos(50);
 		u1.setTdcs(tdcs);
 		u1.setUsers_redes(users_redes);
-		
-/* PRUEBA DE CLASE ASOCIACION VALE*/
-		
+				
 		v1.setPromocion(p1);
-//		p1.getVales().add(v1);		
+		p1.getVales().add(v1);		
 		
 		v1.setUsuario(u1);		
-//		u1.getVales().add(v1);
+		u1.getVales().add(v1);
 		
 		Usuario u2 = new Usuario();
 		u2.setUsername("joseff");
@@ -161,6 +159,13 @@ public class Main {
 		vr1.setReceptor("Rosangelis");
 		vr1.setFecha_envio(new Date(5,5,2015));
 		vr1.setCiudad(c2);
+		
+		vr1.setPromocion(p1);
+		p1.getVales().add(vr1);		
+		
+		vr1.setUsuario(u1);		
+		u1.getVales().add(vr1);		
+		
 		
 		c2.getVales().add(vr1);
 
