@@ -13,8 +13,8 @@ public class Main {
 	public static void main(String[] args) {
 			
 		Ciudad c1 = new Ciudad();
-		c1.setNombre("Toledo");
-		c1.setPais("España");
+		c1.setNombre("Frankfurt");
+		c1.setPais("Alemania");
 
 		Promocion p1 = new Promocion();
 		p1.setIdentificador(245638);
@@ -81,15 +81,39 @@ public class Main {
 		p1.setEmpresa(m1);
 		m1.getPromociones().add(p1);
 		
+		Subcategoria s1 = new Subcategoria();
+		s1.setNombre("Comida rapida");
+		s1.setCategoria(t1);
+		
+		Subcategoria s2 = new Subcategoria();
+		s2.setNombre("Hamburguesas");
+		s2.setCategoria(t1);
+		s2.setSubcat_papa(s1);
+		
+		s1.getSubcategorias().add(s2);
+		
+		Vale v1 = new Vale();
+		v1.setIdentificador(67892);
+		v1.setCiudad(c1);
+		
+		c1.getVales().add(v1);
+		
+		
         @SuppressWarnings("deprecation")
 
 	    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	    Session session = sessionFactory.openSession();
 	    session.beginTransaction();
 
-	    session.save(m1);	    
-	    session.save(p1);    
-//	   	session.save(c1);
+//	    session.save(m1);	    
+//	    session.save(p1);
+	    
+	    session.save(t1);	    
+	    session.save(s1);   
+	    session.save(s2);	  
+	    
+	   	session.save(c1);
+	   	session.save(v1);
 
 
 //	    // Primero se guarda la clase no propietaria, check inverse en set de su xml

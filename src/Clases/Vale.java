@@ -18,9 +18,11 @@ public class Vale {
 	private String modo_envio;
 	private Set<Fecha_Uso> fechas_uso = new HashSet<Fecha_Uso>();
 	
+	private Ciudad ciudad;
+	
 	public Vale(int identificador, Date fecha_compra, String forma_pago,
 			String descrip_promo, String codigo_movil, String modo_envio,
-			Set<Fecha_Uso> fechas_uso) {
+			Set<Fecha_Uso> fechas_uso, Ciudad ciudad) {
 		this.identificador = identificador;
 		this.fecha_compra = fecha_compra;
 		this.forma_pago = forma_pago;
@@ -28,6 +30,7 @@ public class Vale {
 		this.codigo_movil = codigo_movil;
 		this.modo_envio = modo_envio;
 		this.fechas_uso = fechas_uso;
+		this.ciudad = ciudad;
 	}
 
 	public Vale() {
@@ -88,6 +91,14 @@ public class Vale {
 
 	public void setFechas_uso(Set<Fecha_Uso> fechas_uso) {
 		this.fechas_uso = fechas_uso;
+	}
+
+	public Ciudad getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
 	}
 
 }

@@ -40,6 +40,7 @@
 <mapping resource="Mappings/Bien.hbm.xml"/>
 <mapping resource="Mappings/Empresa.hbm.xml"/>
 <mapping resource="Mappings/Categoria.hbm.xml"/>
+<mapping resource="Mappings/Subcategoria.hbm.xml"/>
 </session-factory>
 
 </hibernate-configuration>

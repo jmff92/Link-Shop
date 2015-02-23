@@ -18,10 +18,15 @@
         <property name="modo_envio" column="MODO_ENVIO"/>
         <!-- FALTA Set<Fecha_Uso> fechas_uso -->
  
+         <many-to-one name="Ciudad" class="Clases.Ciudad" fetch="select">
+            <column name="NOMBRE" not-null="true"> </column>
+            <column name="PAIS" not-null="true"> </column>            
+        </many-to-one>        
+ 
         <subclass name="Vale_Regalo" extends="Vale" discriminator-value="VR">
             <property name="receptor" column="RECEPTOR"/>
             <property name="fecha_envio" type="date" column="FECHA_ENVIO"/>
-        </subclass>
+        </subclass>  
  
     </class>
     

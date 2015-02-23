@@ -19,6 +19,13 @@
             </many-to-many>
         </set>        
         
+        <set name="Subcategorias" inverse="true" lazy="true" fetch="select">  
+            <key>
+                <column name="NOMBRE_CAT" not-null="true"/>
+            </key> 
+            <one-to-many class="Clases.Subcategoria"/>
+         </set>
+        
     </class>
   
 </hibernate-mapping>

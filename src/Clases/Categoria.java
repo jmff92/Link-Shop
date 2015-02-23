@@ -11,11 +11,14 @@ public class Categoria {
 
 	private String nombre;
 	
-	private Set<Empresa> empresas = new HashSet<Empresa>();	
+	private Set<Empresa> empresas = new HashSet<Empresa>();
+	private Set<Subcategoria> subcategorias = new HashSet<Subcategoria>();
 
-	public Categoria(String nombre, Set<Empresa> empresas) {
+	public Categoria(String nombre, Set<Empresa> empresas, 
+		   Set<Subcategoria> subcategorias) {
 		this.nombre = nombre;
 		this.empresas = empresas;
+		this.subcategorias = subcategorias;
 	}
 
 	public Categoria() {
@@ -36,6 +39,14 @@ public class Categoria {
 
 	public void setEmpresas(Set<Empresa> empresas) {
 		this.empresas = empresas;
+	}
+
+	public Set<Subcategoria> getSubcategorias() {
+		return subcategorias;
+	}
+
+	public void setSubcategorias(Set<Subcategoria> subcategorias) {
+		this.subcategorias = subcategorias;
 	}
 	
 }

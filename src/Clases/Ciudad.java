@@ -15,12 +15,15 @@ public class Ciudad implements java.io.Serializable {
 	private String nombre;
     private String pais;
     
-	private Set<Promocion> promociones = new HashSet<Promocion>();	    
+	private Set<Promocion> promociones = new HashSet<Promocion>();
+	private Set<Vale> vales = new HashSet<Vale>();
 
-	public Ciudad(String nombre, String pais, Set<Promocion> promociones) {
+	public Ciudad(String nombre, String pais, Set<Promocion> promociones,
+			Set<Vale> vales) {
 		this.nombre = nombre;
 		this.pais = pais;
 		this.promociones = promociones;
+		this.vales = vales;
 	}
 
 	public Ciudad() {
@@ -50,6 +53,15 @@ public class Ciudad implements java.io.Serializable {
 	public void setPromociones(Set<Promocion> promociones) {
 		this.promociones = promociones;
 	}
+
+	public Set<Vale> getVales() {
+		return vales;
+	}
+
+	public void setVales(Set<Vale> vales) {
+		this.vales = vales;
+	}
+	
 }
 
 // END Ciudad.java

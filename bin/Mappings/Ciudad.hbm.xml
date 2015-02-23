@@ -22,6 +22,14 @@
             </many-to-many>
         </set>        
         
+        <set name="Vales" table="COMPRADO_EN" inverse="true" lazy="true" fetch="select">  
+            <key>
+                <column name="NOMBRE" not-null="true"/>
+                <column name="PAIS" not-null="true"/>                
+            </key> 
+            <one-to-many class="Clases.Vale"/>
+         </set>
+        
     </class>
   
 </hibernate-mapping>

@@ -5,26 +5,25 @@
 
 <hibernate-mapping package="Clases">
  
-    <class name="Categoria" table="CATEGORIA">
+    <class name="Subcategoria" table="SUBCATEGORIA">
  
         <id name="Nombre" column="NOMBRE">
         </id>
-  
-        <set name="Empresas" table="SE_ALMACENA" inverse="false" lazy="true" fetch="select" cascade="all"> 
-         <key>
-            <column name="NOMBRE_CAT" not-null="true"/>          
-         </key>
-            <many-to-many class="Clases.Empresa">
-                <column name="NOMBRE_EMP" not-null="true"/>
-            </many-to-many>
-        </set>        
+
+        <many-to-one name="categoria" class="Clases.Categoria" fetch="select">
+            <column name="NOMBRE_CAT" not-null="true"> </column>
+        </many-to-one>
+
+        <many-to-one name="subcat_papa" class="Clases.Subcategoria" fetch="select">
+            <column name="SUBCAT_PAPA"> </column>
+        </many-to-one>
         
         <set name="Subcategorias" inverse="true" lazy="true" fetch="select">  
             <key>
-                <column name="NOMBRE_CAT" not-null="true"/>
+                <column name="SUBCAT_PAPA"/>
             </key> 
             <one-to-many class="Clases.Subcategoria"/>
-         </set>
+         </set>        
         
     </class>
   
