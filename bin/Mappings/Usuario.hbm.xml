@@ -55,7 +55,54 @@
             <key column="AGREGA_AMIGO_ID"/>
             <many-to-many column="ACEPTA_AMIGO_ID" class="Usuario" />
         </set>          
-              
+
+        <set name="ciudades" table="ESTA_INTERESADO" inverse="true" lazy="true" fetch="select"> 
+        <key>
+            <column name="USERNAME"/>         
+         </key>
+            <many-to-many class="Clases.Ciudad">
+                <column name="NOMBRE"/>
+                <column name="PAIS"/>
+            </many-to-many>
+        </set>   
+
+        <set name="categorias" table="PREFIERE" inverse="true" lazy="true" fetch="select"> 
+         <key>
+            <column name="USERNAME" not-null="true"/>         
+         </key>
+            <many-to-many class="Clases.Categoria">
+                <column name="NOMBRE"/>
+            </many-to-many>
+        </set>
+
+        <map name ="compra_tarjeta" table ="COMPRA">
+ 
+             <key column ="EMISOR" foreign-key="ID_USER_FK1"/>
+            
+            <map-key-many-to-many column ="CODIGO" class ="Tarjeta_Regalo" 
+                    foreign-key="ID_USER_FK2"/>
+                    
+            <many-to-many column ="RECEPTOR" class ="Usuario" 
+                    foreign-key="ID_USER_FK3"/>
+        </map>
+
+        <map name ="comparte" table ="COMPARTE">
+ 
+             <key column ="EMISOR" foreign-key="ID_USER1_FK1"/>
+            
+            <map-key-many-to-many column ="IDENTIFICADOR" class ="Promocion" 
+                    foreign-key="ID_USER1_FK2"/>
+                    
+            <many-to-many column ="RECEPTOR" class ="Usuario" 
+                    foreign-key="ID_USER1_FK3"/>
+        </map>
+        
+         <set name="Vales" table="FACTURADO" inverse="true" lazy="true" fetch="select">  
+            <key>
+                <column name="ID_VALE" not-null="false"/>
+            </key> 
+            <one-to-many class="Clases.Vale"/>
+         </set>        
 
     </class>
 

@@ -19,10 +19,14 @@ public class Vale {
 	private Set<Fecha_Uso> fechas_uso = new HashSet<Fecha_Uso>();
 	
 	private Ciudad ciudad;
+	private Usuario usuario;
+	private Promocion promocion;
 	
 	public Vale(int identificador, Date fecha_compra, String forma_pago,
 			String descrip_promo, String codigo_movil, String modo_envio,
-			Set<Fecha_Uso> fechas_uso, Ciudad ciudad) {
+			Set<Fecha_Uso> fechas_uso, Ciudad ciudad, Usuario usuario,
+			Promocion promocion) {
+		super();
 		this.identificador = identificador;
 		this.fecha_compra = fecha_compra;
 		this.forma_pago = forma_pago;
@@ -31,6 +35,8 @@ public class Vale {
 		this.modo_envio = modo_envio;
 		this.fechas_uso = fechas_uso;
 		this.ciudad = ciudad;
+		this.usuario = usuario;
+		this.promocion = promocion;
 	}
 
 	public Vale() {
@@ -99,6 +105,22 @@ public class Vale {
 
 	public void setCiudad(Ciudad ciudad) {
 		this.ciudad = ciudad;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Promocion getPromocion() {
+		return promocion;
+	}
+
+	public void setPromocion(Promocion promocion) {
+		this.promocion = promocion;
 	}
 
 }

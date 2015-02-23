@@ -29,7 +29,17 @@
             </key> 
             <one-to-many class="Clases.Vale"/>
          </set>
-        
+
+        <set name="usuarios" table="ESTA_INTERESADO" inverse="false" lazy="true" fetch="select" cascade="all"> 
+         <key>
+            <column name="NOMBRE"/>
+            <column name="PAIS"/>            
+         </key>
+            <many-to-many class="Clases.Usuario">
+                <column name="USERNAME"/>
+            </many-to-many>
+        </set>
+                
     </class>
   
 </hibernate-mapping>

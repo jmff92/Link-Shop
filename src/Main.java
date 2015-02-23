@@ -104,7 +104,7 @@ public class Main {
 		v1.setModo_envio("Correo Electronico");
 		v1.setFechas_uso(fechas_uso);
 		v1.setCiudad(c1);
-		
+			
 		c1.getVales().add(v1);
 
 		User_Redes red1 = new User_Redes();
@@ -137,6 +137,14 @@ public class Main {
 		u1.setPuntos(50);
 		u1.setTdcs(tdcs);
 		u1.setUsers_redes(users_redes);
+		
+/* PRUEBA DE CLASE ASOCIACION VALE*/
+		
+		v1.setPromocion(p1);
+//		p1.getVales().add(v1);		
+		
+		v1.setUsuario(u1);		
+//		u1.getVales().add(v1);
 		
 		Usuario u2 = new Usuario();
 		u2.setUsername("joseff");

@@ -96,6 +96,13 @@
             <many-to-many column ="RECEPTOR" class ="Usuario" 
                     foreign-key="ID_USER1_FK3"/>
         </map>
+        
+         <set name="Vales" table="FACTURADO" inverse="true" lazy="true" fetch="select">  
+            <key>
+                <column name="ID_VALE" not-null="false"/>
+            </key> 
+            <one-to-many class="Clases.Vale"/>
+         </set>        
 
     </class>
 

@@ -31,6 +31,7 @@ public class Usuario {
 	private Set<Categoria> categorias = new HashSet<Categoria>();
 	private Map<Tarjeta_Regalo,Usuario> compra_tarjeta = new HashMap<Tarjeta_Regalo,Usuario>();
 	private Map<Promocion,Usuario> comparte = new HashMap<Promocion,Usuario>();
+	private Set<Vale> vales = new HashSet<Vale>();
 
 	public Usuario(String username, String contrasena, String nombre,
 			String apellido, String correo_elec, String suscrip_correos,
@@ -38,8 +39,9 @@ public class Usuario {
 			Set<Tarjeta_Credito> tdcs, Set<User_Redes> users_redes,
 			Set<Usuario> agrega_amigo, Set<Usuario> acepta_amigo,
 			Set<Usuario> emisor, Set<Usuario> receptor, Set<Ciudad> ciudades,
-			Set<Categoria> categorias, Map<Tarjeta_Regalo,Usuario> compra_tarjeta,
-			Map<Promocion,Usuario> comparte) {
+			Set<Categoria> categorias,
+			Map<Tarjeta_Regalo, Usuario> compra_tarjeta,
+			Map<Promocion, Usuario> comparte, Set<Vale> vales) {
 		super();
 		this.username = username;
 		this.contrasena = contrasena;
@@ -60,6 +62,7 @@ public class Usuario {
 		this.categorias = categorias;
 		this.compra_tarjeta = compra_tarjeta;
 		this.comparte = comparte;
+		this.vales = vales;
 	}
 
 	public Usuario(){
@@ -224,6 +227,14 @@ public class Usuario {
 
 	public void setComparte(Map<Promocion,Usuario> comparte) {
 		this.comparte = comparte;
+	}
+
+	public Set<Vale> getVales() {
+		return vales;
+	}
+
+	public void setVales(Set<Vale> vales) {
+		this.vales = vales;
 	}
 
 }

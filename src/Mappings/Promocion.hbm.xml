@@ -39,14 +39,21 @@
             <column name="NOMBRE_EMP" not-null="true"> </column>
         </many-to-one>  
 
+        <many-to-one name="categoria" class="Clases.Categoria" fetch="select">
+            <column name="NOMBRE_CAT" not-null="true"> </column>
+        </many-to-one> 
+
         <set name="bienes" table="BIEN_PROMOCION" inverse="false" lazy="true" fetch="select" cascade="all"> 
          	<key column="IDENTIFICADOR" not-null="true"/>
             <many-to-many column="NOMBRE_BIEN" class="Clases.Bien"></many-to-many>
         </set>
         
-        <many-to-one name="categoria" class="Clases.Categoria" fetch="select">
-            <column name="NOMBRE_CAT" not-null="true"> </column>
-        </many-to-one> 
+         <set name="Vales" table="FACTURADA" inverse="true" lazy="true" fetch="select">  
+            <key>
+                <column name="ID_VALE" not-null="false"/>
+            </key> 
+            <one-to-many class="Clases.Vale"/>
+         </set>        
         
     </class>
   

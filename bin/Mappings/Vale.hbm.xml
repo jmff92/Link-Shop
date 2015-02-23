@@ -30,12 +30,20 @@
             <column name="NOMBRE" not-null="true"> </column>
             <column name="PAIS" not-null="true"> </column>            
         </many-to-one>        
+
+        <many-to-one name="Promocion" class="Clases.Promocion" fetch="select">
+            <column name="ID_PROMO" not-null="true"> </column>
+        </many-to-one> 
+
+        <many-to-one name="Usuario" class="Clases.Usuario" fetch="select">
+            <column name="USERNAME" not-null="true"> </column>
+        </many-to-one> 
  
         <subclass name="Vale_Regalo" extends="Vale" discriminator-value="VR">
             <property name="receptor" column="RECEPTOR"/>
             <property name="fecha_envio" type="date" column="FECHA_ENVIO"/>
         </subclass>
- 
+         
     </class>
     
 </hibernate-mapping>
