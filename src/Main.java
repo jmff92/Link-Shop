@@ -1,10 +1,16 @@
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.Set;
 import java.sql.Date;
 import java.util.HashSet;
+
+import Util.HibernateUtil;
+
 import Clases.*;
 
 /*
@@ -197,36 +203,125 @@ public class Main {
 
 	    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	    Session session = sessionFactory.openSession();
-	    session.beginTransaction();
+	    Transaction transaction = null;
+		try {
+			
+			transaction = session.beginTransaction();	    
+	    
+			session.beginTransaction();
 
-	    session.save(tarjeta_regalo);
-		session.save(cat2);
-	    session.save(e1);
-		session.save(e2);
-		session.save(m1);
-		session.save(t1);
-		session.save(bien);
-		session.save(p1);
-		session.save(c1);
-		session.save(c2);
-		session.save(v1);		
-	    session.save(fecha_uso1);
-	    session.save(fecha_uso2);	    
-	    session.save(tdc1);
-	    session.save(t2);
-	   	session.save(s1);   
-	    session.save(s2);
-	    session.save(red1);
-	    session.save(red2);
-	    session.save(u1);
-	    session.save(u2);
-	    session.save(vr1);
+			session.save(tarjeta_regalo);
+			session.save(cat2);
+			session.save(e1);
+			session.save(e2);
+			session.save(m1);
+			session.save(t1);
+			session.save(bien);
+			session.save(p1);
+			session.save(c1);
+			session.save(c2);
+			session.save(v1);		
+			session.save(fecha_uso1);
+			session.save(fecha_uso2);	    
+			session.save(tdc1);
+			session.save(t2);
+			session.save(s1);   
+			session.save(s2);
+			session.save(red1);
+			session.save(red2);
+			session.save(u1);
+			session.save(u2);
+			session.save(vr1);
 
-        session.getTransaction().commit();
-	         
-        session.close();
-        sessionFactory.close();
+			transaction.commit();
+		} catch (HibernateException e) { 
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+//			q1();
+			q2();
+//			q3();
+	}
+	
+	public static void q1() {
+    	Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+        try{
+        	transaction = session.beginTransaction();
+        
+/*        	Query query =
+    				session.createQuery("from Employee emp where emp.salary > 400000");
+    				query.setFirstResult(0);
+    				query.setMaxResults(2); //Para definir el número máximo de tuplas que quiero consultar
+    	    
+    		//Guardando en la lista todas las tuplas recibidas en el query	
+    		List employees = query.list(); 
 
+    		//Iterando sobre todas las tuplas almacenadas en la lista
+        	for (Iterator iterator = employees.iterator(); iterator.hasNext();) {
+        		Employee employee = (Employee) iterator.next(); 
+        		System.out.print("First Name: " + employee.getFirstName()); 
+        		System.out.print("  Last Name: " + employee.getLastName()); 
+        		System.out.println("  Salary: " + employee.getSalary()); 
+        	} */
+        	transaction.commit();
+        } catch (HibernateException e) {
+        	if (transaction!=null) transaction.rollback();
+        	e.printStackTrace(); 
+        } finally {
+        	session.close(); 
+        }		
+	}
+	
+	public static void q2() {
+    	Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+        try{
+        	transaction = session.beginTransaction();
+        
+        	Query query =
+    				session.createQuery("from Compra");
+        	// where EMISOR='rosangelisg'
+    	    Integer count = (Integer)query.uniqueResult();
+        	transaction.commit();
+        } catch (HibernateException e) {
+        	if (transaction!=null) transaction.rollback();
+        	e.printStackTrace(); 
+        } finally {
+        	session.close(); 
+        }		
+	}
+	
+	public static void q3() {
+    	Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+        try{
+        	transaction = session.beginTransaction();
+        
+/*        	Query query =
+    				session.createQuery("from Employee emp where emp.salary > 400000");
+    				query.setFirstResult(0);
+    				query.setMaxResults(2); //Para definir el número máximo de tuplas que quiero consultar
+    	    
+    		//Guardando en la lista todas las tuplas recibidas en el query	
+    		List employees = query.list(); 
+
+    		//Iterando sobre todas las tuplas almacenadas en la lista
+        	for (Iterator iterator = employees.iterator(); iterator.hasNext();) {
+        		Employee employee = (Employee) iterator.next(); 
+        		System.out.print("First Name: " + employee.getFirstName()); 
+        		System.out.print("  Last Name: " + employee.getLastName()); 
+        		System.out.println("  Salary: " + employee.getSalary()); 
+        	} */
+        	transaction.commit();
+        } catch (HibernateException e) {
+        	if (transaction!=null) transaction.rollback();
+        	e.printStackTrace(); 
+        } finally {
+        	session.close(); 
+        }		
 	}
 
 }
