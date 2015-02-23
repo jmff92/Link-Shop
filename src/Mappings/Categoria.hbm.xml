@@ -24,7 +24,14 @@
                 <column name="NOMBRE_CAT" not-null="true"/>
             </key> 
             <one-to-many class="Clases.Subcategoria"/>
-         </set>
+        </set>
+        
+        <set name="Promociones" inverse="true" lazy="true" fetch="select">  
+            <key>
+                <column name="NOMBRE_CAT" not-null="false"/>
+            </key> 
+            <one-to-many class="Clases.Promocion"/>
+        </set>        
         
     </class>
   

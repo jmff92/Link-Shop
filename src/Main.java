@@ -53,6 +53,11 @@ public class Main {
 		
 		Categoria t1 = new Categoria();
 		t1.setNombre("Alimentos");
+		
+		Categoria cat2 = new Categoria();
+		cat2.setNombre("Turismo");		
+		cat2.getPromociones().add(p1);
+		p1.setCategoria(cat2);
 
 		Set<Promocion> promociones = new HashSet<Promocion>();
 		promociones.add(p1);	
@@ -158,7 +163,8 @@ public class Main {
 	    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	    Session session = sessionFactory.openSession();
 	    session.beginTransaction();
-
+	    
+		session.save(cat2);
 	    session.save(e1);
 		session.save(e2);
 		session.save(m1);

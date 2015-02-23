@@ -19,7 +19,7 @@
 
 		<set name="promociones" table="BIEN_PROMOCION" inverse="true" lazy="true" fetch="select"> 
 	         <key>
-	            <column name="NOMBRE" not-null="true"/>
+	            <column name="NOMBRE_BIEN" not-null="true"/>
 	         </key>
             <many-to-many class="Clases.Promocion">
                 <column name="IDENTIFICADOR" not-null="true"/>
