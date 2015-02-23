@@ -132,7 +132,14 @@ public class Main {
 		u1.setPuntos(50);
 		u1.setTdcs(tdcs);
 		u1.setUsers_redes(users_redes);
+		
+		Usuario u2 = new Usuario();
+		u2.setUsername("joseff");
 
+		u2.getAgrega_amigo().add(u1);
+		
+		u1.getEmisor().add(u2);
+				
 		Vale_Regalo vr1 = new Vale_Regalo();
 		vr1.setIdentificador(5432);
 		vr1.setFecha_compra(new Date(3,8,2015));
@@ -169,6 +176,7 @@ public class Main {
 	    session.save(red1);
 	    session.save(red2);
 	    session.save(u1);
+	    session.save(u2);
 	    session.save(c2);
 	    session.save(vr1);
 

@@ -21,11 +21,18 @@ public class Usuario {
 	private int puntos;
 	private Set<Tarjeta_Credito> tdcs = new HashSet<Tarjeta_Credito>();
 	private Set<User_Redes> users_redes = new HashSet<User_Redes>();
+	private Set<Usuario> agrega_amigo = new HashSet<Usuario>();
+	private Set<Usuario> acepta_amigo = new HashSet<Usuario>();	
+	private Set<Usuario> emisor = new HashSet<Usuario>();
+	private Set <Usuario> receptor = new HashSet<Usuario>();	
 	
 	public Usuario(String username, String contrasena, String nombre,
 			String apellido, String correo_elec, String suscrip_correos,
-			String frec_correos, int dinero_promo, int puntos, Set<Tarjeta_Credito> tdcs,
-			Set<User_Redes> users_redes) {
+			String frec_correos, int dinero_promo, int puntos,
+			Set<Tarjeta_Credito> tdcs, Set<User_Redes> users_redes,
+			Set<Usuario> agrega_amigo, Set<Usuario> acepta_amigo,
+			Set<Usuario> emisor, Set<Usuario> receptor) {
+		super();
 		this.username = username;
 		this.contrasena = contrasena;
 		this.nombre = nombre;
@@ -37,6 +44,10 @@ public class Usuario {
 		this.puntos = puntos;
 		this.tdcs = tdcs;
 		this.users_redes = users_redes;
+		this.agrega_amigo = agrega_amigo;
+		this.acepta_amigo = acepta_amigo;
+		this.emisor = emisor;
+		this.receptor = receptor;
 	}
 
 	public Usuario(){
@@ -131,6 +142,38 @@ public class Usuario {
 		this.users_redes = users_redes;
 	}
 
+	public Set<Usuario> getAgrega_amigo() {
+		return agrega_amigo;
+	}
+
+	public void setAgrega_amigo(Set<Usuario> agrega_amigo) {
+		this.agrega_amigo = agrega_amigo;
+	}
+
+	public Set<Usuario> getAcepta_amigo() {
+		return acepta_amigo;
+	}
+
+	public void setAcepta_amigo(Set<Usuario> acepta_amigo) {
+		this.acepta_amigo = acepta_amigo;
+	}
+
+	public Set<Usuario> getEmisor() {
+		return emisor;
+	}
+
+	public void setEmisor(Set<Usuario> emisor) {
+		this.emisor = emisor;
+	}
+
+	public Set<Usuario> getReceptor() {
+		return receptor;
+	}
+
+	public void setReceptor(Set<Usuario> receptor) {
+		this.receptor = receptor;
+	}
+	
 }
 
 // END Usuario.java
