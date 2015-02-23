@@ -5,12 +5,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.sql.Date;
 import java.util.HashSet;
 
 import Util.HibernateUtil;
-
 import Clases.*;
 
 /*
@@ -203,11 +204,8 @@ public class Main {
 
 	    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	    Session session = sessionFactory.openSession();
-	    Transaction transaction = null;
-		try {
-			
-			transaction = session.beginTransaction();	    
-	    
+ 
+		try {			
 			session.beginTransaction();
 
 			session.save(tarjeta_regalo);
@@ -233,39 +231,35 @@ public class Main {
 			session.save(u2);
 			session.save(vr1);
 
-			transaction.commit();
-		} catch (HibernateException e) { 
-			transaction.rollback();
-			e.printStackTrace();
-		} finally {
-			session.close();
+			session.getTransaction().commit();
+		
+		} catch (RuntimeException e) {
+		    session.getTransaction().rollback();
+		    throw e;
 		}
-//			q1();
+		
+			q1();
 			q2();
-//			q3();
+			q3();
 	}
-	
+
+	// Consulta para obtener las ciudades preferidas por un usuario
 	public static void q1() {
     	Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = null;
         try{
         	transaction = session.beginTransaction();
         
-/*        	Query query =
-    				session.createQuery("from Employee emp where emp.salary > 400000");
-    				query.setFirstResult(0);
-    				query.setMaxResults(2); //Para definir el número máximo de tuplas que quiero consultar
-    	    
+        	Query query =
+    				session.createQuery("Select usuciu.nombre, usuciu.pais from Usuario as u Join u.ciudades as usuciu where u.username='rosangelisg'");    	    
     		//Guardando en la lista todas las tuplas recibidas en el query	
-    		List employees = query.list(); 
+    		List cities = query.list(); 
 
     		//Iterando sobre todas las tuplas almacenadas en la lista
-        	for (Iterator iterator = employees.iterator(); iterator.hasNext();) {
-        		Employee employee = (Employee) iterator.next(); 
-        		System.out.print("First Name: " + employee.getFirstName()); 
-        		System.out.print("  Last Name: " + employee.getLastName()); 
-        		System.out.println("  Salary: " + employee.getSalary()); 
-        	} */
+        	for (Iterator iterator = cities.iterator(); iterator.hasNext();) {
+        		Ciudad ciudad = (Ciudad) iterator.next(); 
+        		System.out.print(ciudad.getNombre()+", "+ciudad.getPais());
+        	} 
         	transaction.commit();
         } catch (HibernateException e) {
         	if (transaction!=null) transaction.rollback();
@@ -275,6 +269,7 @@ public class Main {
         }		
 	}
 	
+	// Consulta para obtener el numero de tarjetas regalo adquiridas por un usuario
 	public static void q2() {
     	Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = null;
@@ -282,9 +277,9 @@ public class Main {
         	transaction = session.beginTransaction();
         
         	Query query =
-    				session.createQuery("from Compra");
-        	// where EMISOR='rosangelisg'
-    	    Integer count = (Integer)query.uniqueResult();
+    				session.createQuery("Select u.compra_tarjeta.size from Usuario as u where u.username='rosangelisg'");
+    	    Long count = (Long)query.uniqueResult();
+    	    System.out.println(count); 
         	transaction.commit();
         } catch (HibernateException e) {
         	if (transaction!=null) transaction.rollback();
@@ -294,35 +289,39 @@ public class Main {
         }		
 	}
 	
-	public static void q3() {
+	// Consulta para listar las empresas registradas en el portal cuyo numero de
+	// clientes es mayor a 500
+	public static void q3(){
     	Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = null;
-        try{
+        try {
         	transaction = session.beginTransaction();
         
-/*        	Query query =
-    				session.createQuery("from Employee emp where emp.salary > 400000");
-    				query.setFirstResult(0);
-    				query.setMaxResults(2); //Para definir el número máximo de tuplas que quiero consultar
-    	    
-    		//Guardando en la lista todas las tuplas recibidas en el query	
-    		List employees = query.list(); 
+        	String consulta = "FROM Empresa as emp WHERE emp.num_clientes > 500";
 
-    		//Iterando sobre todas las tuplas almacenadas en la lista
-        	for (Iterator iterator = employees.iterator(); iterator.hasNext();) {
-        		Employee employee = (Employee) iterator.next(); 
-        		System.out.print("First Name: " + employee.getFirstName()); 
-        		System.out.print("  Last Name: " + employee.getLastName()); 
-        		System.out.println("  Salary: " + employee.getSalary()); 
-        	} */
+        	Query query =
+    				session.createQuery(consulta);
+    				query.setFirstResult(0);
+
+    		List empresas = query.list(); 
+
+        	for (Iterator iterator = empresas.iterator(); iterator.hasNext();) {
+        		Empresa empresa = (Empresa) iterator.next(); 
+        		System.out.println("Nombre: " + empresa.getNombre()); 
+        		System.out.println("   Numero de Clientes: " + empresa.getNum_clientes()); 
+        	}
         	transaction.commit();
+
         } catch (HibernateException e) {
+
         	if (transaction!=null) transaction.rollback();
         	e.printStackTrace(); 
+
         } finally {
+
         	session.close(); 
-        }		
-	}
+        }
+    }
 
 }
 
