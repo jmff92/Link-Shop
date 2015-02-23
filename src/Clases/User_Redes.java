@@ -7,22 +7,32 @@ package Clases;
 
 public class User_Redes {
 
-	private String user_redes;
+	private String user;
+	private String red;
 
-	public User_Redes(String user_redes) {
-		this.user_redes = user_redes;
+	public User_Redes(String user) {
+		this.user = user;
+		this.red = red;
 	}
 
 	public User_Redes() {
 
 	}
 	
-	public String getUser_redes() {
-		return user_redes;
+	public String getUser() {
+		return user;
 	}
 
-	public void setUser_redes(String user_redes) {
-		this.user_redes = user_redes;
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getRed() {
+		return red;
+	}
+
+	public void setRed(String red) {
+		this.red = red;
 	}
 
 }

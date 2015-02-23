@@ -4,6 +4,10 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="Clases">
+
+    <class name="Fecha_Uso" table="FECHA_USO">
+        <id name="fecha_u" column="FECHA_U"></id>
+    </class>
  
     <class name="Vale" table="VALE" discriminator-value="V">
 
@@ -16,7 +20,11 @@
         <property name="descrip_promo" column="DESCRIP_PROMO"/>
         <property name="codigo_movil" column="CODIGO_MOVIL"/>
         <property name="modo_envio" column="MODO_ENVIO"/>
-        <!-- FALTA Set<Fecha_Uso> fechas_uso -->
+
+        <set name="fechas_uso" inverse="false" lazy="true" fetch="select" cascade="all"> 
+            <key column="IDENTIFICADOR"/>
+            <one-to-many class="Clases.Fecha_Uso"/>
+        </set> 
  
          <many-to-one name="Ciudad" class="Clases.Ciudad" fetch="select">
             <column name="NOMBRE" not-null="true"> </column>
@@ -26,7 +34,6 @@
         <subclass name="Vale_Regalo" extends="Vale" discriminator-value="VR">
             <property name="receptor" column="RECEPTOR"/>
             <property name="fecha_envio" type="date" column="FECHA_ENVIO"/>
-        </subclass>  
  
     </class>
     

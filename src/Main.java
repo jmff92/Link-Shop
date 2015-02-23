@@ -12,6 +12,7 @@ public class Main {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 			
+
 		Ciudad c1 = new Ciudad();
 		c1.setNombre("Frankfurt");
 		c1.setPais("Alemania");
@@ -25,14 +26,14 @@ public class Main {
 		p1.setFecha_fin_vig(new Date(115,5,3));
 		p1.setCoordenadas(1234567890);
 		
-/*		Enlace e1 = new Enlace();
+		Enlace e1 = new Enlace();
 		e1.setUrl("www.venezuelatuya.com");
 		
-		p1.getEnlaces().add(e1); */
+//		p1.getEnlaces().add(e1);
 		p1.setCoordenadas(1234567890);		
 
 		c1.getPromociones().add(p1);
-		p1.getCiudades().add(c1);
+		p1.getCiudades().add(c1);*/
 		
 		//Vale_Regalo vr1 = new Vale_Regalo();
 
@@ -66,7 +67,7 @@ public class Main {
 
 		p1.setEnlaces(enlaces);*/
 
-		Empresa m1 = new Empresa();
+/*Empresa m1 = new Empresa();
 		m1.setNombre("McDonalds");
 		m1.setTelefono("02129454422");
 		m1.setDireccion("Avenida principal de la Trinidad, Baruta - Edo.Miranda");
@@ -79,8 +80,9 @@ public class Main {
 		t1.getEmpresas().add(m1);
 
 		p1.setEmpresa(m1);
-		m1.getPromociones().add(p1);
+		m1.getPromociones().add(p1);*/
 		
+
 		Subcategoria s1 = new Subcategoria();
 		s1.setNombre("Comida rapida");
 		s1.setCategoria(t1);
@@ -101,9 +103,63 @@ public class Main {
 		
         @SuppressWarnings("deprecation")
 
+
+/*		Fecha_Uso fecha_uso1 = new Fecha_Uso(new Date(115,5,2));
+		Fecha_Uso fecha_uso2 = new Fecha_Uso(new Date(115,5,3));
+		Set<Fecha_Uso> fechas_uso = new HashSet<Fecha_Uso>();
+		fechas_uso.add(fecha_uso1);
+		fechas_uso.add(fecha_uso2);
+
+		Vale v1 = new Vale();
+
+		v1.setIdentificador(123456);
+		v1.setFecha_compra(new Date(3,5,2015));
+		v1.setForma_pago("TDC");
+		v1.setDescrip_promo("Ful day en los Roques");
+		v1.setCodigo_movil("QR123456");
+		v1.setModo_envio("Correo Electronico");
+		v1.setFechas_uso(fechas_uso);*/
+
+/*		User_Redes red1 = new User_Redes();
+		red1.setUser("@rosangelisgarcia");
+		red1.setRed("Instagram");
+
+		User_Redes red2 = new User_Redes();
+		red2.setUser("@rosangelisg");
+		red2.setRed("Twitter");
+
+		Set<User_Redes> users_redes = new HashSet<User_Redes>();
+		users_redes.add(red1);
+		users_redes.add(red2);
+
+		Tarjeta_Credito t1 = new Tarjeta_Credito("123456");
+		Tarjeta_Credito t2 = new Tarjeta_Credito("654321");
+		Set<Tarjeta_Credito> tdcs = new HashSet<Tarjeta_Credito>();
+		tdcs.add(t1);
+		tdcs.add(t2);
+
+		Usuario u1 = new Usuario();
+		u1.setUsername("rosangelisg");
+		u1.setContrasena("123456");
+		u1.setNombre("Rosangelis");
+		u1.setApellido("Garcia");
+		u1.setCorreo_elec("rosangelis.92");
+		u1.setSuscrip_correos("true");
+		u1.setFrec_correos("15 dias");
+		u1.setDinero_promo(100);
+		u1.setPuntos(50);
+		u1.setTdcs(tdcs);
+		u1.setUsers_redes(users_redes);*/
+
+
+
+        //@SuppressWarnings("deprecation")
+
+
 	    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	    Session session = sessionFactory.openSession();
 	    session.beginTransaction();
+
 
 //	    session.save(m1);	    
 //	    session.save(p1);
@@ -115,13 +171,32 @@ public class Main {
 	   	session.save(c1);
 	   	session.save(v1);
 
+	   	//session.save(fecha1);
+	    //session.save(fecha2);
+		//session.save(evento);
+		//session.save(vr1); 
+//	    session.save(e1);
+//	    session.save(e2);
+//	    session.save(p1);    
+//	   	session.save(c1);
+
+
 
 //	    // Primero se guarda la clase no propietaria, check inverse en set de su xml
+//	    session.save(e1);
 //	    session.save(p1);    
-//	    session.save(c1);
-	    	    
-//	    session.save(m1);
-//	    session.save(t1);
+//	    session.save(c1);	
+
+/*	    session.save(fecha_uso1);
+	    session.save(fecha_uso2);
+	    session.save(v1); */
+
+/*	    session.save(t1);
+	    session.save(t2);
+	    session.save(red1);
+	    session.save(red2);
+	    session.save(u1);*/
+
 
         session.getTransaction().commit();
 	         

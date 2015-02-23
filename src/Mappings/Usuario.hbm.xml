@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Clases">
+
+    <class name="User_Redes" table="USER_REDES">
+        <id name="user" column="USER"></id>
+        <property name="red" column="RED"/>
+    </class>
+ 
+    <class name="Tarjeta_Credito" table="TARJETA_CREDITO">
+        <id name="tdc_num" column="TDC_NUM"></id>
+    </class>
+
+    <class name="Usuario" table="USUARIO">
+
+        <id name="username" column="USERNAME"></id>
+        <property name="contrasena" column="CONTRASENA"/>
+        <property name="nombre" column="NOMBRE"/>
+        <property name="apellido" column="APELLIDO"/>
+        <property name="correo_elec" column="CORREO_ELEC"/>
+        <property name="suscrip_correos" column="SUSCRIP_CORREOS"/>
+        <property name="frec_correos" column="FREC_CORREOS"/>     
+        <property name="dinero_promo" column="DINERO_PROMO"/>
+        <property name="puntos" column="PUNTOS"/>
+
+        <set name="tdcs" inverse="false" lazy="true" fetch="select" cascade="all"> 
+        	<key column="USERNAME"/>
+            <one-to-many class="Clases.Tarjeta_Credito"/>
+        </set>    
+
+        <set name="users_redes" inverse="false" lazy="true" fetch="select" cascade="all"> 
+            <key column="USERNAME"/>
+            <one-to-many class="Clases.User_Redes"/>
+        </set>      
+
+    </class>
+
+    
+</hibernate-mapping>
