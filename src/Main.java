@@ -140,9 +140,7 @@ public class Main {
 		
 		Usuario u2 = new Usuario();
 		u2.setUsername("joseff");
-
-		u2.getAgrega_amigo().add(u1);
-		
+		u2.getAgrega_amigo().add(u1);		
 		u1.getEmisor().add(u2);
 				
 		Vale_Regalo vr1 = new Vale_Regalo();
@@ -158,12 +156,37 @@ public class Main {
 		
 		c2.getVales().add(vr1);
 
+		Set<Usuario> usuarios = new HashSet<Usuario>();
+		usuarios.add(u1);
+		usuarios.add(u2);
+		c2.setUsuarios(usuarios);
+		t1.setUsuarios(usuarios);
+
+		Set<Ciudad> ciudades = new HashSet<Ciudad>();
+		ciudades.add(c1);
+		u1.setCiudades(ciudades);
+		u2.setCiudades(ciudades);
+
+		Set<Categoria> categorias = new HashSet<Categoria>();
+		categorias.add(t1);
+		u1.setCategorias(categorias);
+		u2.setCategorias(categorias);
+
+		Tarjeta_Regalo tarjeta_regalo = new Tarjeta_Regalo();
+		tarjeta_regalo.setCodigo(9998);
+		tarjeta_regalo.setMonto(200); 
+
+		u1.addTernaria(tarjeta_regalo,u2);
+
+		u2.addTernariaComparte(p1,u1);
+
         @SuppressWarnings("deprecation")
 
 	    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	    Session session = sessionFactory.openSession();
 	    session.beginTransaction();
-	    
+
+	    session.save(tarjeta_regalo);
 		session.save(cat2);
 	    session.save(e1);
 		session.save(e2);
@@ -172,6 +195,7 @@ public class Main {
 		session.save(bien);
 		session.save(p1);
 		session.save(c1);
+		session.save(c2);
 		session.save(v1);		
 	    session.save(fecha_uso1);
 	    session.save(fecha_uso2);	    
@@ -183,7 +207,6 @@ public class Main {
 	    session.save(red2);
 	    session.save(u1);
 	    session.save(u2);
-	    session.save(c2);
 	    session.save(vr1);
 
         session.getTransaction().commit();

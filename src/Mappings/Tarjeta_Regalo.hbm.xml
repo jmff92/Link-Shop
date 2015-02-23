@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Clases">
+
+    <class name="Tarjeta_Regalo" table="TARJETA_REGALO">
+        
+        <id name="codigo" type="integer">
+            <column name="CODIGO" />
+        </id>
+
+        <property name="monto" type="integer">
+            <column name="MONTO" />
+        </property>
+
+    </class>
+
+</hibernate-mapping>

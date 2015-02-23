@@ -17,13 +17,15 @@ public class Ciudad implements java.io.Serializable {
     
 	private Set<Promocion> promociones = new HashSet<Promocion>();
 	private Set<Vale> vales = new HashSet<Vale>();
+	private Set<Usuario> usuarios = new HashSet<Usuario>();
 
 	public Ciudad(String nombre, String pais, Set<Promocion> promociones,
-			Set<Vale> vales) {
+			Set<Vale> vales, Set<Usuario> usuarios) {
 		this.nombre = nombre;
 		this.pais = pais;
 		this.promociones = promociones;
 		this.vales = vales;
+		this.usuarios = usuarios;
 	}
 
 	public Ciudad() {
@@ -62,6 +64,14 @@ public class Ciudad implements java.io.Serializable {
 		this.vales = vales;
 	}
 	
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 }
 
 // END Ciudad.java

@@ -31,7 +31,16 @@
                 <column name="NOMBRE_CAT" not-null="false"/>
             </key> 
             <one-to-many class="Clases.Promocion"/>
-        </set>        
+        </set>
+
+        <set name="usuarios" table="PREFIERE" inverse="false" lazy="true" fetch="select" cascade="all"> 
+         <key>
+            <column name="NOMBRE"/>         
+         </key>
+            <many-to-many class="Clases.Usuario">
+                <column name="USERNAME"/>
+            </many-to-many>
+        </set>         
         
     </class>
   

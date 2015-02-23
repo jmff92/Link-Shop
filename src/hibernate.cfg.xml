@@ -42,6 +42,8 @@
 <mapping resource="Mappings/Categoria.hbm.xml"/>
 <mapping resource="Mappings/Subcategoria.hbm.xml"/>
 <mapping resource="Mappings/Usuario.hbm.xml"/>
+<mapping resource="Mappings/Tarjeta_Regalo.hbm.xml"/>
+
 </session-factory>
 
 </hibernate-configuration>

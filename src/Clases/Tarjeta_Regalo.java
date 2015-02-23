@@ -8,9 +8,9 @@ package Clases;
 public class Tarjeta_Regalo {
 
 	private int codigo;
-	private Integer monto;
+	private int monto;
 	
-	public Tarjeta_Regalo(int codigo, Integer monto) {
+	public Tarjeta_Regalo(int codigo, int monto) {
 		this.codigo = codigo;
 		this.monto = monto;
 	}
@@ -27,11 +27,11 @@ public class Tarjeta_Regalo {
 		this.codigo = codigo;
 	}
 
-	public Integer getMonto() {
+	public int getMonto() {
 		return monto;
 	}
 
-	public void setMonto(Integer monto) {
+	public void setMonto(int monto) {
 		this.monto = monto;
 	}
 

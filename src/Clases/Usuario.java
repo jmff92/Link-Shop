@@ -2,6 +2,8 @@ package Clases;
 
 import java.util.Set;
 import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 
 /*
  * Clase: Usuario
@@ -24,14 +26,20 @@ public class Usuario {
 	private Set<Usuario> agrega_amigo = new HashSet<Usuario>();
 	private Set<Usuario> acepta_amigo = new HashSet<Usuario>();	
 	private Set<Usuario> emisor = new HashSet<Usuario>();
-	private Set <Usuario> receptor = new HashSet<Usuario>();	
-	
+	private Set<Usuario> receptor = new HashSet<Usuario>();
+	private Set<Ciudad> ciudades = new HashSet<Ciudad>();
+	private Set<Categoria> categorias = new HashSet<Categoria>();
+	private Map<Tarjeta_Regalo,Usuario> compra_tarjeta = new HashMap<Tarjeta_Regalo,Usuario>();
+	private Map<Promocion,Usuario> comparte = new HashMap<Promocion,Usuario>();
+
 	public Usuario(String username, String contrasena, String nombre,
 			String apellido, String correo_elec, String suscrip_correos,
 			String frec_correos, int dinero_promo, int puntos,
 			Set<Tarjeta_Credito> tdcs, Set<User_Redes> users_redes,
 			Set<Usuario> agrega_amigo, Set<Usuario> acepta_amigo,
-			Set<Usuario> emisor, Set<Usuario> receptor) {
+			Set<Usuario> emisor, Set<Usuario> receptor, Set<Ciudad> ciudades,
+			Set<Categoria> categorias, Map<Tarjeta_Regalo,Usuario> compra_tarjeta,
+			Map<Promocion,Usuario> comparte) {
 		super();
 		this.username = username;
 		this.contrasena = contrasena;
@@ -48,11 +56,23 @@ public class Usuario {
 		this.acepta_amigo = acepta_amigo;
 		this.emisor = emisor;
 		this.receptor = receptor;
+		this.ciudades = ciudades;
+		this.categorias = categorias;
+		this.compra_tarjeta = compra_tarjeta;
+		this.comparte = comparte;
 	}
 
 	public Usuario(){
 
 	}
+
+	public synchronized void addTernaria(final Tarjeta_Regalo tarjeta, Usuario user) {
+        compra_tarjeta.put(tarjeta,user);
+    }
+
+    public synchronized void addTernariaComparte(final Promocion promocion, Usuario user) {
+        comparte.put(promocion,user);
+    }
 
 	public String getUsername() {
 		return username;
@@ -173,7 +193,39 @@ public class Usuario {
 	public void setReceptor(Set<Usuario> receptor) {
 		this.receptor = receptor;
 	}
+
+	public Set<Ciudad> getCiudades() {
+		return ciudades;
+	}
+
+	public void setCiudades(Set<Ciudad> ciudades) {
+		this.ciudades = ciudades;
+	}
 	
+	public Set<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(Set<Categoria> ciudades) {
+		this.categorias = categorias;
+	}
+
+	public Map<Tarjeta_Regalo,Usuario> getCompra_tarjeta() {
+		return compra_tarjeta;
+	}
+
+	public void setCompra_tarjeta(Map<Tarjeta_Regalo,Usuario> compra_tarjeta) {
+		this.compra_tarjeta = compra_tarjeta;
+	}
+
+	public Map<Promocion,Usuario> getComparte() {
+		return comparte;
+	}
+
+	public void setComparte(Map<Promocion,Usuario> comparte) {
+		this.comparte = comparte;
+	}
+
 }
 
 // END Usuario.java
