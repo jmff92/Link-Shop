@@ -204,9 +204,10 @@ public class Main {
 
 	    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	    Session session = sessionFactory.openSession();
- 
-		try {			
-			session.beginTransaction();
+	    Transaction transaction = null;
+	    
+		try {
+			transaction = session.beginTransaction();
 
 			session.save(tarjeta_regalo);
 			session.save(cat2);
@@ -231,72 +232,10 @@ public class Main {
 			session.save(u2);
 			session.save(vr1);
 
-			session.getTransaction().commit();
-		
-		} catch (RuntimeException e) {
-		    session.getTransaction().rollback();
-		    throw e;
-		}
-		
-			q1();
-			q2();
-			q3();
-	}
-
-	// Consulta para obtener las ciudades preferidas por un usuario
-	public static void q1() {
-    	Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = null;
-        try{
-        	transaction = session.beginTransaction();
-        
-        	Query query =
-    				session.createQuery("Select usuciu.nombre, usuciu.pais from Usuario as u Join u.ciudades as usuciu where u.username='rosangelisg'");    	    
-    		//Guardando en la lista todas las tuplas recibidas en el query	
-    		List cities = query.list(); 
-
-    		//Iterando sobre todas las tuplas almacenadas en la lista
-        	for (Iterator iterator = cities.iterator(); iterator.hasNext();) {
-        		Ciudad ciudad = (Ciudad) iterator.next(); 
-        		System.out.print(ciudad.getNombre()+", "+ciudad.getPais());
-        	} 
-        	transaction.commit();
-        } catch (HibernateException e) {
-        	if (transaction!=null) transaction.rollback();
-        	e.printStackTrace(); 
-        } finally {
-        	session.close(); 
-        }		
-	}
-	
-	// Consulta para obtener el numero de tarjetas regalo adquiridas por un usuario
-	public static void q2() {
-    	Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = null;
-        try{
-        	transaction = session.beginTransaction();
-        
-        	Query query =
-    				session.createQuery("Select u.compra_tarjeta.size from Usuario as u where u.username='rosangelisg'");
-    	    Long count = (Long)query.uniqueResult();
-    	    System.out.println(count); 
-        	transaction.commit();
-        } catch (HibernateException e) {
-        	if (transaction!=null) transaction.rollback();
-        	e.printStackTrace(); 
-        } finally {
-        	session.close(); 
-        }		
-	}
-	
-	// Consulta para listar las empresas registradas en el portal cuyo numero de
-	// clientes es mayor a 500
-	public static void q3(){
-    	Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = null;
-        try {
-        	transaction = session.beginTransaction();
-        
+			session.flush();
+            
+			// Consulta para listar las empresas registradas en el portal cuyo numero de
+			// clientes es mayor a 500
         	String consulta = "FROM Empresa as emp WHERE emp.num_clientes > 500";
 
         	Query query =
@@ -309,20 +248,38 @@ public class Main {
         		Empresa empresa = (Empresa) iterator.next(); 
         		System.out.println("Nombre: " + empresa.getNombre()); 
         		System.out.println("   Numero de Clientes: " + empresa.getNum_clientes()); 
-        	}
-        	transaction.commit();
+        	}         	
+        	
+        	// Consulta para obtener el numero de tarjetas regalo adquiridas por un usuario            
+        	query =
+    				session.createQuery("Select u.compra_tarjeta.size from Usuario as u where u.username='rosangelisg'");
+    	    int count = (int)query.uniqueResult();
+    	    System.out.println(count); 
+    	    
+    		// Consulta para obtener las ciudades preferidas por un usuario       	
+        	
+    	    /*
+        	query =
+    				session.createQuery("Select usuciu.nombre, usuciu.pais from Usuario as u Join u.ciudades as usuciu where u.username='rosangelisg'");    	    
+    		//Guardando en la lista todas las tuplas recibidas en el query	
+    		List<Ciudad> cities = query.list(); 
 
-        } catch (HibernateException e) {
+        	for (Iterator iterator = cities.iterator(); iterator.hasNext();) {
+        		Ciudad ciudad = (Ciudad) iterator.next(); 
+        		System.out.print(ciudad.getNombre() + ", " + ciudad.getPais());
+        	} 
+        	*/   	    
+        	       	
+        	transaction.commit();			
+			
+		} catch (RuntimeException e) {
+		    session.getTransaction().rollback();
+		    throw e;
+		} finally {session.close(); sessionFactory.close();}
+		
+	}
 
-        	if (transaction!=null) transaction.rollback();
-        	e.printStackTrace(); 
-
-        } finally {
-
-        	session.close(); 
-        }
-    }
-
-}
+		
+	}
 
 // END Main.java
