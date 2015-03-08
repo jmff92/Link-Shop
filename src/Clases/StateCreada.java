@@ -1,5 +1,9 @@
 package Clases;
 
+/*
+ * Representa el estado de una promocion recien creada. 
+ */
+
 public class StateCreada implements State {
 
 	public void doAction(Promocion prom) {

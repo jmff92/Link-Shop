@@ -46,4 +46,24 @@
          
     </class>
     
+    <database-object>
+        <create>       
+        CREATE TRIGGER comproPromCompartida AFTER INSERT ON VALE
+        FOR EACH ROW BEGIN
+            DECLARE CONTADOR INT;
+            SELECT COUNT(1) INTO CONTADOR FROM COMPARTE WHERE RECEPTOR = NEW.USERNAME AND PROMOCION = NEW.ID_PROMO AND GRATUITO='false';
+            IF CONTADOR = 0 THEN
+                UPDATE COMPARTE SET COMPRA = COMPRA + 1 WHERE RECEPTOR = NEW.USERNAME AND PROMOCION = NEW.ID_PROMO;
+            END IF;
+        END;
+        </create>
+
+        <drop>
+        drop trigger comproPromCompartida;
+        </drop>
+
+        <dialect-scope name="org.hibernate.dialect.MySQLDialect"/>
+
+    </database-object>
+
 </hibernate-mapping>

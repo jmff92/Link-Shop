@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Clases">
+
+	<class name="Comparte" table="COMPARTE">
+
+		<id name="id" column="ID"></id>
+
+        <property name="compra" column="COMPRA"/>
+
+        <property name="gratuito" column="GRATUITO"/>
+
+        <many-to-one name="emisor" class="Clases.Usuario" fetch="select">
+            <column name="EMISOR" not-null="false"></column>
+        </many-to-one>
+         
+		<many-to-one name="receptor" class="Clases.Usuario" fetch="select">
+            <column name="RECEPTOR" not-null="false"></column>
+        </many-to-one>
+         
+        <many-to-one name="promocion" class="Clases.Promocion" fetch="select">
+            <column name="PROMOCION" not-null="false"></column>
+        </many-to-one>
+          
+    </class>
+
+    <database-object>
+        <create>       
+        CREATE TRIGGER comparte_prom BEFORE INSERT ON COMPARTE
+        FOR EACH ROW BEGIN
+            DECLARE CONTADOR INT;
+            DECLARE COMPRO_PROMO INT;
+            DECLARE MSG VARCHAR(255);
+            
+            SET CONTADOR = (SELECT COUNT(1) FROM COMPARTE WHERE EMISOR = NEW.EMISOR AND PROMOCION = NEW.PROMOCION AND GRATUITO='false');
+
+            SET COMPRO_PROMO = (SELECT COUNT(1) FROM VALE WHERE USERNAME = NEW.EMISOR AND ID_PROMO = NEW.PROMOCION);
+
+            IF COMPRO_PROMO > 0 THEN
+                SET NEW.COMPRA = 0;
+                IF CONTADOR = 0 THEN
+                    SET NEW.GRATUITO = 'true';
+                ELSE
+                    SET NEW.GRATUITO = 'false';
+                END IF;
+            ELSE
+                SET MSG = 'ERROR: No se puede compartir una promocion que no este comprada.';
+                signal sqlstate '45000' set message_text = MSG;
+            END IF;
+        END;
+        </create>
+
+        <drop>
+        drop trigger comparte_prom;
+        </drop>
+
+        <dialect-scope name="org.hibernate.dialect.MySQLDialect"/>
+
+    </database-object>
+
+    <database-object>
+        <create>       
+        CREATE TRIGGER comparte_prom_update BEFORE UPDATE ON COMPARTE
+        FOR EACH ROW BEGIN
+            DECLARE PRECIO INT;
+            DECLARE CONTADOR INT;
+
+            SELECT SUM(COMPRA) + 1 INTO CONTADOR FROM COMPARTE WHERE EMISOR = NEW.EMISOR AND PROMOCION = NEW.PROMOCION;
+            IF CONTADOR = 3 THEN 
+                SET NEW.GRATUITO = 'false';
+                SET PRECIO = (SELECT PRECIO_OFERTADO FROM PROMOCION WHERE IDENTIFICADOR = NEW.PROMOCION);
+                UPDATE USUARIO SET DINERO_PROMO = DINERO_PROMO + PRECIO WHERE USERNAME = NEW.EMISOR;
+            END IF;
+        END;
+        </create>
+
+        <drop>
+        drop trigger comparte_prom_update;
+        </drop>
+
+        <dialect-scope name="org.hibernate.dialect.MySQLDialect"/>
+        
+    </database-object>
+</hibernate-mapping>

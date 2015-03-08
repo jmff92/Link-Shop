@@ -3,6 +3,10 @@ package Clases;
 import java.util.Calendar;
 import java.sql.Date;
 
+/*
+ * Representa el estado de una promocion mientras esta disponible para su compra. 
+ */
+
 public class StatePublicada implements State {
 
 	public void doAction(Promocion prom) {
@@ -18,7 +22,7 @@ public class StatePublicada implements State {
 		// Caso vencida	
 		Date fecha_fin_vig = prom.getFecha_fin_vig();
 		Date today_date = new Date(Calendar.getInstance().getTimeInMillis());
-		
+	
 		if ((fecha_fin_vig.getDate() == today_date.getDate()) &
 			(fecha_fin_vig.getMonth() == today_date.getMonth()) &
 			(fecha_fin_vig.getYear() == today_date.getYear())) {

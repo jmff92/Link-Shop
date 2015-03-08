@@ -382,17 +382,26 @@ public class Main {
 					
 		p1.setExistencia(2);
 		p1.setLink("promocion-destacada");
+		
+/*		// promocion creada
 		p1.doAction();
+*/		
+		
+/*		// promocion publicada
+		p1.doAction();
+*/		
 			
-/*	promocion vencida			
-		p1.setFecha_fin_vig(new Date(115,2,7));					
+/*	    // promocion vencida			
+		p1.setFecha_fin_vig(new Date(115,2,8));					
 		p1.doAction();
-*/			
-/*	promocion anulada			
+*/		
+			
+/*	    // promocion anulada			
 		p1.setLink("null");			
 		p1.doAction();
-*/						
-/* 			
+*/
+		
+/*	    // agotar promocion 			
 		p1.doAction();
 		p1.doAction();
 		p1.doAction();			

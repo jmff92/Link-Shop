@@ -1,0 +1,41 @@
+# 0 #
+# Mostramos que los 3 triggers se crearon
+# mysql -h 127.0.0.1 -u root -p
+# USE LinkShop;
+# SHOW TRIGGERS; (se crearon 3 triggers)
+
+# 1 #
+# Mostramos el dinero_promo del usuario u1
+# SELECT USERNAME, DINERO_PROMO FROM USUARIO;
+
+# 2 #
+# Mostramos el precio_ofertado de la promocion p1
+# SELECT DESCRIPCION, PRECIO_OFERTADO FROM PROMOCION;
+
+# 3 #
+# Usuario compro promocion p1
+# SELECT USERNAME, ID_PROMO, DISCRIMINATOR FROM VALE WHERE ID_PROMO = 245638;
+
+# 4 #
+# Usuario comparte a 3 amigos (u2, u3, u4) una promocion p1
+
+# 5 #
+# Se inicializaron los valores
+# SELECT * FROM COMPARTE;
+
+# 6 #
+# Amigos (u2, u3, u4) compran la promocion p1
+
+# 7 #
+# Mostramos el dinero_promo del usuario u1 y vemos que aumento
+# SELECT USERNAME, DINERO_PROMO FROM USUARIO;
+
+# 8 #
+# El mismo usuario u1 invita a otro amigo u5 y todo se mantiene 
+# SELECT * FROM COMPARTE;
+# SELECT USERNAME, DINERO_PROMO FROM USUARIO;
+
+# 9 #
+# Amigo u5 compra la promo, no pasa nada en comparte ni en el usuario
+# SELECT * FROM COMPARTE;
+# SELECT USERNAME, DINERO_PROMO FROM USUARIO;
