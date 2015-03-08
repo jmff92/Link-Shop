@@ -19,6 +19,12 @@
         <property name="fecha_ini_vig" column="FECHA_INI_VIG"/>
         <property name="fecha_fin_vig" column="FECHA_FIN_VIG"/>        
         <property name="coordenadas" column="COORDENADAS"/>
+        <property name="link" column="LINK"/>
+        <property name="existencia" column="EXISTENCIA"/>        
+        <property name="compras" type="integer">
+            <column name="COMPRAS" not-null="false" default="null" />
+        </property>
+        
   
         <set name="Ciudades" table="OFERTADA_EN" inverse="true" lazy="true" fetch="select"> 
          <key>

@@ -19,6 +19,12 @@ public class Promocion {
 	private Date fecha_fin_vig;
 	private int coordenadas;
 	private Set<Enlace> enlaces = new HashSet<Enlace>();
+	private State status;	
+	private String link;
+	private int existencia;
+	private Integer compras;
+
+	
 	
 	private Set<Ciudad> ciudades = new HashSet<Ciudad>();
 	private Empresa empresa;	
@@ -26,27 +32,8 @@ public class Promocion {
 	private Categoria categoria;
 	private Set<Vale> vales = new HashSet<Vale>();
 	
-	public Promocion(int identificador, String descripcion, int precio_real,
-			int precio_ofertado, Date fecha_ini_vig, Date fecha_fin_vig,
-			int coordenadas, Set<Enlace> enlaces, Set<Ciudad> ciudades,
-			Empresa empresa, Set<Bien> bienes, Categoria categoria,
-			Set<Vale> vales) {
-		this.identificador = identificador;
-		this.descripcion = descripcion;
-		this.precio_real = precio_real;
-		this.precio_ofertado = precio_ofertado;
-		this.fecha_ini_vig = fecha_ini_vig;
-		this.fecha_fin_vig = fecha_fin_vig;
-		this.coordenadas = coordenadas;
-		this.enlaces = enlaces;
-		this.ciudades = ciudades;
-		this.empresa = empresa;
-		this.bienes = bienes;
-		this.categoria = categoria;
-		this.vales = vales;
-	}
-
 	public Promocion() {
+		this.status = new StateCreada();
 	}
 
 	public int getIdentificador() {
@@ -153,6 +140,42 @@ public class Promocion {
 		this.vales = vales;
 	}
 
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public State getStatus() {
+		return status;
+	}
+
+	public void setStatus(State status) {
+		this.status = status;
+	}
+
+	public int getExistencia() {
+		return existencia;
+	}
+
+	public void setExistencia(int existencia) {
+		this.existencia = existencia;
+	}
+
+	public Integer getCompras() {
+		return compras;
+	}
+
+	public void setCompras(Integer compras) {
+		this.compras = compras;
+	}
+	
+	public void doAction() {
+		status.doAction(this);
+	}
+	
 }
 
 // END Promocion.java
