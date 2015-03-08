@@ -44,10 +44,22 @@ public class Main {
 		Tarjeta_Regalo tarjeta_regalo = new Tarjeta_Regalo();
 		Fecha_Uso fecha_uso1 = new Fecha_Uso(new Date(115,5,2));
 		Fecha_Uso fecha_uso2 = new Fecha_Uso(new Date(115,5,3));
+		Comparte comparte1 = new Comparte();
+		Comparte comparte2 = new Comparte();
+		Comparte comparte3 = new Comparte();
+		Comparte comparte4 = new Comparte();
+		Usuario u3 = new Usuario();		
+		Usuario u4 = new Usuario();
+		Usuario u5 = new Usuario();			
+		Vale v2 = new Vale();
+		Vale v3 = new Vale();
+		Vale v4 = new Vale();
+		Vale v5 = new Vale();
 		
 		initialize(c1, c2, e1, e2, p1, bien, m1, t1, cat2, s1, s2, v1, red1, 
 				red2, tdc1, t2, u1, u2, vr1, tarjeta_regalo, fecha_uso1,
-				fecha_uso2);
+				fecha_uso2, comparte1, comparte2, comparte3, comparte4, u3, u4, 
+				u5, v2, v3, v4, v5);
 		
         @SuppressWarnings("deprecation")
 
@@ -81,8 +93,31 @@ public class Main {
 			session.save(red1);
 			session.save(red2);
 			session.save(u1);
-			session.save(u2);
+			session.save(u2);			
 			session.save(vr1);
+			
+			/* DESCOMENTAR PARA PASO 4
+			session.save(u3);
+			session.save(u4);
+			session.save(comparte1);
+			session.save(comparte2);
+			session.save(comparte3);
+			*/
+
+			/* DESCOMENTAR PARA PASO 6
+			session.save(v2);
+			session.save(v3);
+			session.save(v4);
+			*/
+
+			/* DESCOMENTAR PARA PASO 8
+			session.save(comparte4);
+			*/
+
+			/* DESCOMENTAR PARA PASO 9
+			session.save(u5);
+			session.save(v5);
+			*/
 
 			session.flush();        	       	
         	transaction.commit();			
@@ -98,7 +133,8 @@ public class Main {
 			Bien bien, Empresa m1, Categoria t1, Categoria cat2, Subcategoria s1, Subcategoria s2,
 			Vale v1, User_Redes red1, User_Redes red2, Tarjeta_Credito tdc1, Tarjeta_Credito t2,
 			Usuario u1, Usuario u2, Vale_Regalo vr1, Tarjeta_Regalo tarjeta_regalo, Fecha_Uso fecha_uso1,
-			Fecha_Uso fecha_uso2) {
+			Fecha_Uso fecha_uso2, Comparte comparte1, Comparte comparte2, Comparte comparte3, Comparte comparte4,
+			Usuario u3, Usuario u4, Usuario u5, Vale v2, Vale v3, Vale v4, Vale v5) {
 		
 		c1.setNombre("Madrid");
 		c1.setPais("España");
@@ -169,7 +205,7 @@ public class Main {
 		v1.setIdentificador(123456);
 		v1.setFecha_compra(new Date(3,5,2015));
 		v1.setForma_pago("TDC");
-		v1.setDescrip_promo("Full day en los Roques");
+		v1.setDescrip_promo("Excursion en Merida");
 		v1.setCodigo_movil("QR123456");
 		v1.setModo_envio("Correo Electronico");
 		v1.setFechas_uso(fechas_uso);
@@ -252,12 +288,94 @@ public class Main {
 
 		u1.addTernaria(tarjeta_regalo,u2);
 
-		//u2.addTernariaComparte(p1,u1);
-		//Comparte comparte = new Comparte();
-		//comparte.setId(123);
-		//comparte.setEmisor(u1);
-		//comparte.setPromocion(p1);
-		//comparte.setReceptor(u2);
+
+		/*******************************************
+		 *         COMPARTIR UNA PROMOCION         *
+		 *******************************************/
+
+		/* DESCOMENTAR PARA PASO 4
+		u3.setUsername("johagd");
+		u4.setUsername("anadorta");
+
+		comparte1.setId(122);
+		comparte1.setEmisor(u1);
+		comparte1.setPromocion(p1);
+		comparte1.setReceptor(u2);
+
+		comparte2.setId(123);
+		comparte2.setEmisor(u1);
+		comparte2.setPromocion(p1);
+		comparte2.setReceptor(u3);
+
+		comparte3.setId(124);
+		comparte3.setEmisor(u1);
+		comparte3.setPromocion(p1);
+		comparte3.setReceptor(u4); */
+
+		/* DESCOMENTAR PARA PASO 6
+		v2.setIdentificador(123457);
+		v2.setFecha_compra(new Date(3,6,2015));
+		v2.setForma_pago("TDC");
+		v2.setDescrip_promo("Excursion en Merida");
+		v2.setCodigo_movil("QR123456");
+		v2.setModo_envio("Correo Electronico");
+		v2.setFechas_uso(fechas_uso);
+		v2.setCiudad(c1);
+		v2.setPromocion(p1);
+		p1.getVales().add(v2);		
+		v2.setUsuario(u2);		
+		u2.getVales().add(v2);
+
+		v3.setIdentificador(123458);
+		v3.setFecha_compra(new Date(3,7,2015));
+		v3.setForma_pago("TDC");
+		v3.setDescrip_promo("Excursion en Merida");
+		v3.setCodigo_movil("QR123456");
+		v3.setModo_envio("Correo Electronico");
+		v3.setFechas_uso(fechas_uso);
+		v3.setCiudad(c1);
+		v3.setPromocion(p1);
+		p1.getVales().add(v3);		
+		v3.setUsuario(u3);		
+		u3.getVales().add(v3);
+
+		v4.setIdentificador(123459);
+		v4.setFecha_compra(new Date(3,8,2015));
+		v4.setForma_pago("TDC");
+		v4.setDescrip_promo("Excursion en Merida");
+		v4.setCodigo_movil("QR123456");
+		v4.setModo_envio("Correo Electronico");
+		v4.setFechas_uso(fechas_uso);
+		v4.setCiudad(c1);
+		v4.setPromocion(p1);
+		p1.getVales().add(v4);		
+		v4.setUsuario(u4);		
+		u4.getVales().add(v4);
+		*/
+
+		/* DESCOMENTAR PARA PASO 8
+		u5.setUsername("realejos");
+		comparte4.setId(125);
+		comparte4.setEmisor(u1);
+		comparte4.setPromocion(p1);
+		comparte4.setReceptor(u5);
+		*/
+
+		/* DESCOMENTAR PARA PASO 9
+		v5.setIdentificador(123450);
+		v5.setFecha_compra(new Date(3,8,2015));
+		v5.setForma_pago("TDC");
+		v5.setDescrip_promo("Excursion en Merida");
+		v5.setCodigo_movil("QR123456");
+		v5.setModo_envio("Correo Electronico");
+		v5.setFechas_uso(fechas_uso);
+		v5.setCiudad(c1);
+		v5.setPromocion(p1);
+		p1.getVales().add(v5);		
+		v5.setUsuario(u5);		
+		u5.getVales().add(v5);
+		*/
+
 	}
 	
 	public static void estadosPromocion(Promocion p1) {
