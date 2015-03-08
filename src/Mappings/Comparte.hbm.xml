@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Clases">
+
+	<class name="Comparte" table="COMPARTE">
+
+		<id name="id" column="ID"></id>
+
+        <property name="compra" column="COMPRA"/>
+
+        <property name="gratuito" column="GRATUITO"/>
+
+        <many-to-one name="emisor" class="Clases.Usuario" fetch="select">
+            <column name="EMISOR" not-null="false"></column>
+        </many-to-one>
+         
+		<many-to-one name="receptor" class="Clases.Usuario" fetch="select">
+            <column name="RECEPTOR" not-null="false"></column>
+        </many-to-one>
+         
+        <many-to-one name="promocion" class="Clases.Promocion" fetch="select">
+            <column name="PROMOCION" not-null="false"></column>
+        </many-to-one>
+          
+    </class>
+    
+</hibernate-mapping>

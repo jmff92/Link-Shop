@@ -86,25 +86,27 @@
                     foreign-key="ID_USER_FK3"/>
         </map>
 
-        <map name ="comparte" table ="COMPARTE">
- 
-             <key column ="EMISOR" foreign-key="ID_USER1_FK1"/>
-            
-            <map-key-many-to-many column ="IDENTIFICADOR" class ="Promocion" 
-                    foreign-key="ID_USER1_FK2"/>
-                    
-            <many-to-many column ="RECEPTOR" class ="Usuario" 
-                    foreign-key="ID_USER1_FK3"/>
-        </map>
-        
          <set name="Vales" table="FACTURADO" inverse="true" lazy="true" fetch="select">  
             <key>
                 <column name="ID_VALE" not-null="false"/>
             </key> 
             <one-to-many class="Clases.Vale"/>
-         </set>        
+         </set>    
+
+         <set name="comparte_emisor" table="COMPARTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EMISOR" not-null="false"/>
+            </key>
+            <one-to-many class="Clases.Comparte"></one-to-many>
+        </set>
+         
+          <set name="comparte_receptor" table="COMPARTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RECEPTOR" not-null="false"/>
+            </key>
+            <one-to-many class="Clases.Comparte"></one-to-many>
+        </set>
 
     </class>
-
     
 </hibernate-mapping>

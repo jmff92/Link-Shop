@@ -30,8 +30,10 @@ public class Usuario {
 	private Set<Ciudad> ciudades = new HashSet<Ciudad>();
 	private Set<Categoria> categorias = new HashSet<Categoria>();
 	private Map<Tarjeta_Regalo,Usuario> compra_tarjeta = new HashMap<Tarjeta_Regalo,Usuario>();
-	private Map<Promocion,Usuario> comparte = new HashMap<Promocion,Usuario>();
 	private Set<Vale> vales = new HashSet<Vale>();
+
+    private Set<Comparte> comparte_emisor = new HashSet<Comparte>();
+    private Set<Comparte> comparte_receptor = new HashSet<Comparte>();
 
 	public Usuario(String username, String contrasena, String nombre,
 			String apellido, String correo_elec, String suscrip_correos,
@@ -40,9 +42,8 @@ public class Usuario {
 			Set<Usuario> agrega_amigo, Set<Usuario> acepta_amigo,
 			Set<Usuario> emisor, Set<Usuario> receptor, Set<Ciudad> ciudades,
 			Set<Categoria> categorias,
-			Map<Tarjeta_Regalo, Usuario> compra_tarjeta,
-			Map<Promocion, Usuario> comparte, Set<Vale> vales) {
-		super();
+			Map<Tarjeta_Regalo, Usuario> compra_tarjeta, Set<Vale> vales,
+			Set<Comparte> comparte_emisor, Set<Comparte> comparte_receptor) {
 		this.username = username;
 		this.contrasena = contrasena;
 		this.nombre = nombre;
@@ -61,8 +62,9 @@ public class Usuario {
 		this.ciudades = ciudades;
 		this.categorias = categorias;
 		this.compra_tarjeta = compra_tarjeta;
-		this.comparte = comparte;
 		this.vales = vales;
+		this.comparte_emisor = comparte_emisor;
+		this.comparte_receptor = comparte_receptor;
 	}
 
 	public Usuario(){
@@ -71,10 +73,6 @@ public class Usuario {
 
 	public synchronized void addTernaria(final Tarjeta_Regalo tarjeta, Usuario user) {
         compra_tarjeta.put(tarjeta,user);
-    }
-
-    public synchronized void addTernariaComparte(final Promocion promocion, Usuario user) {
-        comparte.put(promocion,user);
     }
 
 	public String getUsername() {
@@ -221,20 +219,28 @@ public class Usuario {
 		this.compra_tarjeta = compra_tarjeta;
 	}
 
-	public Map<Promocion,Usuario> getComparte() {
-		return comparte;
-	}
-
-	public void setComparte(Map<Promocion,Usuario> comparte) {
-		this.comparte = comparte;
-	}
-
 	public Set<Vale> getVales() {
 		return vales;
 	}
 
 	public void setVales(Set<Vale> vales) {
 		this.vales = vales;
+	}
+
+	public Set<Comparte> getComparte_emisor() {
+		return comparte_emisor;
+	}
+
+	public void setComparte_emisor(Set<Comparte> comparte_emisor) {
+		this.comparte_emisor = comparte_emisor;
+	}
+
+	public Set<Comparte> getComparte_receptor() {
+		return comparte_receptor;
+	}
+
+	public void setComparte_receptor(Set<Comparte> comparte_receptor) {
+		this.comparte_receptor = comparte_receptor;
 	}
 
 }

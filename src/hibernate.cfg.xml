@@ -43,6 +43,7 @@
 <mapping resource="Mappings/Subcategoria.hbm.xml"/>
 <mapping resource="Mappings/Usuario.hbm.xml"/>
 <mapping resource="Mappings/Tarjeta_Regalo.hbm.xml"/>
+<mapping resource="Mappings/Comparte.hbm.xml"/>
 
 </session-factory>
 

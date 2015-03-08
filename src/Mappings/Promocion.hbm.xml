@@ -59,7 +59,14 @@
                 <column name="ID_VALE" not-null="false"/>
             </key> 
             <one-to-many class="Clases.Vale"/>
-         </set>        
+         </set>       
+
+        <set name="promocion_compartida" table="COMPARTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROMOCION" not-null="false"/>
+            </key>
+            <one-to-many class="Clases.Comparte"></one-to-many>
+        </set> 
         
     </class>
   

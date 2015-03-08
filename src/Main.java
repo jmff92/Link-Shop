@@ -252,7 +252,12 @@ public class Main {
 
 		u1.addTernaria(tarjeta_regalo,u2);
 
-		u2.addTernariaComparte(p1,u1);
+		//u2.addTernariaComparte(p1,u1);
+		//Comparte comparte = new Comparte();
+		//comparte.setId(123);
+		//comparte.setEmisor(u1);
+		//comparte.setPromocion(p1);
+		//comparte.setReceptor(u2);
 	}
 	
 	public static void estadosPromocion(Promocion p1) {
@@ -261,11 +266,11 @@ public class Main {
 		p1.setLink("promocion-destacada");
 		p1.doAction();
 			
-/*// promocion vencida			
+/*	promocion vencida			
 		p1.setFecha_fin_vig(new Date(115,2,7));					
 		p1.doAction();
 */			
-/*// promocion anulada			
+/*	promocion anulada			
 		p1.setLink("null");			
 		p1.doAction();
 */						

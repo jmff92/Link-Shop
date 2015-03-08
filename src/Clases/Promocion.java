@@ -19,12 +19,11 @@ public class Promocion {
 	private Date fecha_fin_vig;
 	private int coordenadas;
 	private Set<Enlace> enlaces = new HashSet<Enlace>();
+	
 	private State status;	
 	private String link;
 	private int existencia;
 	private Integer compras;
-
-	
 	
 	private Set<Ciudad> ciudades = new HashSet<Ciudad>();
 	private Empresa empresa;	
@@ -32,6 +31,8 @@ public class Promocion {
 	private Categoria categoria;
 	private Set<Vale> vales = new HashSet<Vale>();
 	
+	private Set<Comparte> promocion_compartida = new HashSet<Comparte>();
+
 	public Promocion() {
 		this.status = new StateCreada();
 	}
@@ -174,6 +175,14 @@ public class Promocion {
 	
 	public void doAction() {
 		status.doAction(this);
+	}
+
+	public Set<Comparte> getPromocion_compartida() {
+		return promocion_compartida;
+	}
+
+	public void setPromocion_compartida(Set<Comparte> promocion_compartida) {
+		this.promocion_compartida = promocion_compartida;
 	}
 	
 }
